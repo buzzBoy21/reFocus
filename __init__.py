@@ -13,5 +13,5 @@ host = "localhost"
 port = 8080
 
 server=HTTPServer((host, port), HandleServer)
-
+print("hola")
 server.serve_forever()
