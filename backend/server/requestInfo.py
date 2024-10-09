@@ -2,14 +2,17 @@
 from typing import TYPE_CHECKING
 import json
 if TYPE_CHECKING:
-    from backend.server.server import HandleServer  # import only when iterpreter is checking types
+    from server.server import HandleServer  # import only when iterpreter is checking types
 
 class RequestInfo:
 
     def __init__(self,request:'HandleServer'):
         self.request=request
 
-    def fromUrl(self):
+    def fromUrl(self)->dict:
+        """
+        Return like JSON all parameter from Body
+        """
         path_parts = self.request.path.split('?')
         query = path_parts[1] if len(path_parts) > 1 else '' 
 
@@ -24,7 +27,10 @@ class RequestInfo:
                     query_params[key] = value
         return query_params
     
-    def fromBody(self):
+    def fromBody(self)->dict:
+        """
+        Return like JSON all parameter from Body
+        """
         content_length = int(self.request.headers['Content-Length'])
         
         # if there is no body, i dont so this python throw an Error-> Expecting value: line 1 column 1 (char 0)

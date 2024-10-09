@@ -1,26 +1,10 @@
-
-def car():
-    return "pinocho"
-def pc(info):
-    print(info.fromUrl())
-    
-def pc2(info):
-    print(info.fromUrl())
-    return "sda"
-def test(info):
-    print("hola3123")
-    print(info.fromBody())
-    return "caqita"
-def test2(info):
-    print(info.fromBody())
-
+from controllers.getAllWindowsNames import geAllWindowsNames
+from controllers.createaHotKeyController import createaHotKeyController
 GETroutes={
-    "/car":car,
-    "/cacatua":pc,
-    "/cacatua2":pc2
+    "/get-all-windows-names":geAllWindowsNames,
+    
 }
 
 POSTroutes={
-    "/test_post":test,
-    "/test_post2":test2
+    "/create-hot-key":createaHotKeyController
 }

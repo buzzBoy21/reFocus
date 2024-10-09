@@ -1,10 +1,10 @@
 from http.server import BaseHTTPRequestHandler
 import inspect
 from typing import Any
-from backend.exceptions.serverExceptions import OneOrZeroAtributtes
-from backend.server.routes import GETroutes,POSTroutes
+from exceptions.serverExceptions import OneOrZeroAtributtes
+from server.routes import GETroutes,POSTroutes
 
-from backend.server.requestInfo import RequestInfo
+from server.requestInfo import RequestInfo
 
 
 class HandleServer(BaseHTTPRequestHandler):  
