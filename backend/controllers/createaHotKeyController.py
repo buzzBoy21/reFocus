@@ -2,6 +2,9 @@ from server.requestInfo import RequestInfo
 from model.hotKeys import HotKey
 from service.changeFocusAndAction import ChangeFocusAndAction
 from service.windowUtils import WindowUtils
+from service.storageOrRecoverHotKey import StorageOrRecoverHotKey
+from config.settings import generalSettings
+
 import json
 def createaHotKeyController(parameterRequest:RequestInfo):
     
@@ -31,10 +34,12 @@ def createaHotKeyController(parameterRequest:RequestInfo):
                                               windows_where_execute,
                                               execute_on_target,
                                               modifierKeys)
-        HotKey.createAndAddToHotKeyList(key_to_active_fuction,
+        newHotKey=HotKey.createAndAddToHotKeyList(key_to_active_fuction,
                                 fuctionToExecute.executeReFocus,
                                 hot_key_name,
                                 hot_key_description)
+        handlerStorageNewHotKey=StorageOrRecoverHotKey(generalSettings["dbFile"])
+        handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey,modifierKeys)
         return json.dumps({"response":True})
     else:
         return json.dumps({"response":False})

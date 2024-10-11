@@ -90,7 +90,6 @@ class HandleServer(BaseHTTPRequestHandler):
                 raise OneOrZeroAtributtes(f"the fuction which is writed in json GET must have 0 or 1 parameter\n If you write one is to get the url parameter")
             
         else:
-            print("caca")
             self._wrongResponse("Not Found url",404)
 
     def do_GET(self):
