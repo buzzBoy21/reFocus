@@ -39,10 +39,10 @@ class HandleServer(BaseHTTPRequestHandler):
         self.wfile.write(f"{message}\n{explain}".encode())
 
     def _buildAllResponse(self,routes:dict[str, Any]):
-        #get the handle with key name
-        hasUrlAttr= '&' in self.path
+        #get the handle fuction when the route has params
+        hasUrlAttr= '?' in self.path
         if hasUrlAttr:
-            endpointWithOutAttr=self.path.split('&')[0]
+            endpointWithOutAttr=self.path.split('?')[0]
             handler= routes.get(endpointWithOutAttr)
         else:
             print(f"dentro{self.path}")

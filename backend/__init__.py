@@ -16,5 +16,3 @@ server=HTTPServer((host, port), HandleServer)
 print("hola")
 server.serve_forever()
 
-
-
