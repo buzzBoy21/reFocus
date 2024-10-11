@@ -71,7 +71,7 @@ class ChangeFocusAndAction():
                 app = Application().connect(title=self.nameWindowToBack)
                 window2 = app.window(title=self.nameWindowToBack)
                 window2.set_focus()
-  
+                
         except Exception as e:
             print(f"Error: {str(e)}")
             raise Exception("general error in changeFocusAndAction.py") from e
