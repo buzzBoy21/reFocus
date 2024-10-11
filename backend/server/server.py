@@ -45,7 +45,6 @@ class HandleServer(BaseHTTPRequestHandler):
             endpointWithOutAttr=self.path.split('?')[0]
             handler= routes.get(endpointWithOutAttr)
         else:
-            print(f"dentro{self.path}")
             
             #get the handle with key name
             handler = routes.get(self.path)
