@@ -4,10 +4,16 @@ from .windowUtils import WindowUtils
 from .changeFocusAndAction import ChangeFocusAndAction
 
 class StorageOrRecoverHotKey():
+    """
+        Is used when hotkey are being created to stock the hotkey and when the server start to recover all hotkey was saved
+    """
     def __init__(self , relativePathFile):
         self._jsonHandler=JsonFileHandler(relativePathFile)
 
     def reCreateAllHotKeys(self):
+        """
+            Recreates all stored hotkeys.This is being used on server startup..
+        """
         allStoragedHotKeys=self._jsonHandler.read_json()
         allStoragedHotKeys=self._jsonHandler.read_json()["allStorage"]
         for storagedHotKey in allStoragedHotKeys:
@@ -40,6 +46,9 @@ class StorageOrRecoverHotKey():
                                     hot_key_description)
     
     def storageHotKey(self,ChangeFocusAndActionObject:ChangeFocusAndAction,HotKeyObject:HotKey,flexibleSearch):
+        """
+            Stores the created hotkey in the db.json file
+        """
         keyToActiveHotKey= HotKeyObject.keysToPress
         nameHotKey = HotKeyObject.nameHotKey
         description = HotKeyObject.description

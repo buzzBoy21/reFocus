@@ -1,0 +1,11 @@
+.frame-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 4em;
+   max-height: 4em;
+}
+.controllers-element {
+   height: 100%;
+   display: flex;
+}

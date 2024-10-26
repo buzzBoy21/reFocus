@@ -1,0 +1,11 @@
+.keyboard-container {
+   display: flex;
+   justify-content: center;
+   margin: 0 1.5em;
+   max-width: 100vw;
+}
+.basis-keyboard-layout {
+   display: grid;
+   grid-auto-flow: row;
+   overflow: auto;
+}

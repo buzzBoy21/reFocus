@@ -1,14 +1,14 @@
 {
     "allStorage": [
         {
-            "key_to_active_auto_hot_keys": "ctrl+a",
+            "key_to_active_auto_hot_keys": "shift+a",
             "hot_key_name": "Open Application",
             "hot_key_description": "This hotkey opens the specified application.",
-            "key_to_press_when_focused": "a",
-            "window_name_to_focus": "Endpoints - Brain Notes - Obsidian v1.6.7",
+            "key_to_press_when_focused": "b",
+            "window_name_to_focus": "Obsidian",
             "window_name_to_back": "",
             "windows_where_execute": [],
-            "execute_on_target": true,
+            "execute_on_target": false,
             "flexible_search": true
         }
     ]

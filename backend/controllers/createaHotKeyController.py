@@ -7,7 +7,9 @@ from config.settings import generalSettings
 
 import json
 def createaHotKeyController(parameterRequest:RequestInfo):
-    
+    """
+        This is used when you want create a new Hot Key controller by APIREST
+    """
 
     paramBody=parameterRequest.fromBody()
     key_to_active_fuction=paramBody["key_to_active_auto_hot_keys"]

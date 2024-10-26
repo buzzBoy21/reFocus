@@ -1,0 +1,635 @@
+{
+   "partsInWidth": 88,
+   "partsInHeight": 6,
+
+   "normalKeySize": {
+      "aspectRatio": "1/1",
+      "gridColumn": "4",
+      "gridRow": "1"
+   },
+   "styleKeyboard": {
+      "background": "hsl(0, 0%, 90%, 0.3)",
+      "gap": "0.3em",
+      "padding": "1em",
+      "border-radius": "0.5em"
+   },
+   "generalPressedStyle": {
+      "position": "relative",
+      "display": "flex",
+      "justify-content": "center",
+      "align-items": "center",
+      "overFlow": "hidden",
+      "border": "solid rgb(255, 255, 255) 0.15em",
+      "border-radius": "0.3em",
+      "backgroundColor": "hsl(97, 100%, 60%, 0.5)",
+      "WebkitBoxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)",
+      "MozBoxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)",
+      "boxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)"
+   },
+   "generalKeyStyle": {
+      "position": "relative",
+      "border": "solid rgb(255, 255, 255) 0.15em",
+      "display": "flex",
+      "justify-content": "center",
+      "align-items": "center",
+      "border-radius": "0.3em",
+      "transition": "0.2s cubic-bezier(1,.39,.81,.66) background-color",
+      "overflow": "hidden",
+      ":hover": {
+         "background-color": "hsl(97, 100%, 99%, 0.5)",
+         "cursor": "pointer"
+      },
+      ":hover > span": {
+         "background-color": "red",
+         "color": "red"
+      },
+      "span": {
+         "background-color": "red",
+         "color": "red"
+      }
+   },
+   "generalSpaceStyle": {},
+   "generalLetterStyle": {
+      "display": "block",
+      "line-height": "1em",
+      "width": "fit-content",
+      "overflow": "hidden",
+      "textAlign": "center",
+
+      "transition": "1s background-color"
+   },
+   "keys": [
+      {
+         "row": [
+            {
+               "type": "key",
+               "keyValue": "a",
+               "lettersKey": "dsada"
+            },
+            {
+               "type": "space"
+            },
+            {
+               "type": "key",
+               "keyValue": "f1",
+               "lettersKey": "F1"
+            },
+            {
+               "type": "key",
+               "keyValue": "f2",
+               "lettersKey": "F2"
+            },
+            {
+               "type": "key",
+               "keyValue": "f3",
+               "lettersKey": "F3"
+            },
+            {
+               "type": "key",
+               "keyValue": "f4",
+               "lettersKey": "F4"
+            },
+            {
+               "type": "space",
+               "customSize": "1/2"
+            },
+            {
+               "type": "key",
+               "keyValue": "f5",
+               "lettersKey": "F5"
+            },
+            {
+               "type": "key",
+               "keyValue": "f6",
+               "lettersKey": "F5"
+            },
+            {
+               "type": "key",
+               "keyValue": "f7",
+               "lettersKey": "F5"
+            },
+            {
+               "type": "key",
+               "keyValue": "f8",
+               "lettersKey": "F8"
+            },
+            {
+               "type": "space",
+               "customSize": "1/2"
+            },
+            {
+               "type": "key",
+               "keyValue": "f9",
+               "lettersKey": "F9"
+            },
+            {
+               "type": "key",
+               "keyValue": "f10",
+               "lettersKey": "F10"
+            },
+            {
+               "type": "key",
+               "keyValue": "f11",
+               "lettersKey": "F11"
+            },
+            {
+               "type": "key",
+               "keyValue": "f12",
+               "lettersKey": "F12"
+            },
+            {
+               "type": "space",
+               "customSize": "1/28"
+            }
+         ]
+      },
+      {
+         "row": [
+            {
+               "type": "key",
+               "keyValue": "º",
+               "lettersKey": "º"
+            },
+            {
+               "type": "key",
+               "keyValue": "1",
+               "lettersKey": "1"
+            },
+            {
+               "type": "key",
+               "keyValue": "2",
+               "lettersKey": "2"
+            },
+            {
+               "type": "key",
+               "keyValue": "3",
+               "lettersKey": "3"
+            },
+            {
+               "type": "key",
+               "keyValue": "4",
+               "lettersKey": "4"
+            },
+            {
+               "type": "key",
+               "keyValue": "5",
+               "lettersKey": "6"
+            },
+            {
+               "type": "key",
+               "keyValue": "7",
+               "lettersKey": "7"
+            },
+            {
+               "type": "key",
+               "keyValue": "8",
+               "lettersKey": "8"
+            },
+            {
+               "type": "key",
+               "keyValue": "9",
+               "lettersKey": "9"
+            },
+            {
+               "type": "key",
+               "keyValue": "0",
+               "lettersKey": "0"
+            },
+            {
+               "type": "key",
+               "keyValue": "'",
+               "lettersKey": "'"
+            },
+            {
+               "type": "key",
+               "keyValue": "¡",
+               "lettersKey": "¡"
+            },
+            {
+               "type": "key",
+               "keyValue": "backspace",
+               "lettersKey": "retroceso",
+               "customSize": "1/12"
+            },
+            {
+               "type": "key",
+               "keyValue": "insert",
+               "lettersKey": "insert"
+            },
+            {
+               "type": "key",
+               "keyValue": "home",
+               "lettersKey": "inicio"
+            },
+            {
+               "type": "key",
+               "keyValue": "page down",
+               "lettersKey": "re pég"
+            },
+            {
+               "type": "key",
+               "keyValue": "numpad",
+               "lettersKey": "bloq num"
+            },
+            {
+               "type": "key",
+               "keyValue": "/",
+               "lettersKey": "/"
+            },
+            {
+               "type": "key",
+               "keyValue": "*",
+               "lettersKey": "*"
+            },
+            {
+               "type": "key",
+               "keyValue": "-",
+               "lettersKey": "-"
+            }
+         ]
+      },
+      {
+         "row": [
+            {
+               "type": "key",
+               "keyValue": "tab",
+               "lettersKey": "tab",
+               "customSize": "1/6"
+            },
+            {
+               "referenceKey": "1",
+               "type": "key",
+               "keyValue": "q",
+               "lettersKey": "Q"
+            },
+            {
+               "type": "key",
+               "keyValue": "w",
+               "lettersKey": "W"
+            },
+            {
+               "type": "key",
+               "keyValue": "e",
+               "lettersKey": "E"
+            },
+            {
+               "type": "key",
+               "keyValue": "r",
+               "lettersKey": "R"
+            },
+            {
+               "type": "key",
+               "keyValue": "t",
+               "lettersKey": "T"
+            },
+            {
+               "type": "key",
+               "keyValue": "y",
+               "lettersKey": "Y"
+            },
+            {
+               "type": "key",
+               "keyValue": "u",
+               "lettersKey": "U"
+            },
+            {
+               "type": "key",
+               "keyValue": "i",
+               "lettersKey": "I"
+            },
+            {
+               "type": "key",
+               "keyValue": "o",
+               "lettersKey": "O"
+            },
+            {
+               "type": "key",
+               "keyValue": "p",
+               "lettersKey": "P"
+            },
+            {
+               "type": "key",
+               "keyValue": "`",
+               "lettersKey": "`"
+            },
+            {
+               "type": "key",
+               "keyValue": "+",
+               "lettersKey": "+"
+            },
+            {
+               "type": "key",
+               "keyValue": "ç",
+               "lettersKey": "ç",
+               "customSize": "1/6"
+            },
+            {
+               "type": "key",
+               "keyValue": "delete",
+               "lettersKey": "suprimir"
+            },
+            {
+               "type": "key",
+               "keyValue": "end",
+               "lettersKey": "fin"
+            },
+            {
+               "type": "key",
+               "keyValue": "pagee up",
+               "lettersKey": "av pég"
+            },
+            {
+               "type": "key",
+               "keyValue": "7",
+               "lettersKey": "7"
+            },
+            {
+               "type": "key",
+               "keyValue": "8",
+               "lettersKey": "8"
+            },
+            {
+               "type": "key",
+               "keyValue": "9",
+               "lettersKey": "9"
+            },
+            {
+               "type": "key",
+               "keyValue": "+",
+               "lettersKey": "+",
+               "customSize": "2/4"
+            }
+         ]
+      },
+      {
+         "row": [
+            {
+               "type": "key",
+               "keyValue": "capslock",
+               "lettersKey": "Bloq Mayús",
+               "customSize": "1/8"
+            },
+            {
+               "type": "key",
+               "keyValue": "a",
+               "lettersKey": "A"
+            },
+            {
+               "type": "key",
+               "keyValue": "s",
+               "lettersKey": "S"
+            },
+            {
+               "type": "key",
+               "keyValue": "d",
+               "lettersKey": "D"
+            },
+            {
+               "type": "key",
+               "keyValue": "f",
+               "lettersKey": "F"
+            },
+            {
+               "type": "key",
+               "keyValue": "g",
+               "lettersKey": "G"
+            },
+            {
+               "type": "key",
+               "keyValue": "h",
+               "lettersKey": "H"
+            },
+            {
+               "type": "key",
+               "keyValue": "j",
+               "lettersKey": "J"
+            },
+            {
+               "type": "key",
+               "keyValue": "k",
+               "lettersKey": "K"
+            },
+            {
+               "type": "key",
+               "keyValue": "l",
+               "lettersKey": "L"
+            },
+            {
+               "type": "key",
+               "keyValue": "ñ",
+               "lettersKey": "Ñ"
+            },
+            {
+               "type": "key",
+               "keyValue": "´",
+               "lettersKey": "´"
+            },
+            {
+               "type": "key",
+               "keyValue": "enter",
+               "lettersKey": "Intro",
+               "customSize": "1/8"
+            },
+            {
+               "type": "space",
+               "customSize": "1/12"
+            },
+            {
+               "type": "key",
+               "keyValue": "4",
+               "lettersKey": "4"
+            },
+            {
+               "type": "key",
+               "keyValue": "5",
+               "lettersKey": "5"
+            },
+            {
+               "type": "key",
+               "keyValue": "6",
+               "lettersKey": "6"
+            }
+         ]
+      },
+      {
+         "row": [
+            {
+               "type": "key",
+               "keyValue": "shift",
+               "lettersKey": "Shift"
+            },
+            {
+               "type": "key",
+               "keyValue": "z",
+               "lettersKey": ">"
+            },
+            {
+               "type": "key",
+               "keyValue": "z",
+               "lettersKey": "Z"
+            },
+            {
+               "type": "key",
+               "keyValue": "x",
+               "lettersKey": "X"
+            },
+            {
+               "type": "key",
+               "keyValue": "c",
+               "lettersKey": "C"
+            },
+            {
+               "type": "key",
+               "keyValue": "v",
+               "lettersKey": "V"
+            },
+            {
+               "type": "key",
+               "keyValue": "b",
+               "lettersKey": "B"
+            },
+            {
+               "type": "key",
+               "keyValue": "n",
+               "lettersKey": "N"
+            },
+            {
+               "type": "key",
+               "keyValue": "m",
+               "lettersKey": "M"
+            },
+            {
+               "type": "key",
+               "keyValue": ",",
+               "lettersKey": ","
+            },
+            {
+               "type": "key",
+               "keyValue": ".",
+               "lettersKey": "."
+            },
+            {
+               "type": "key",
+               "keyValue": "-",
+               "lettersKey": "-"
+            },
+            {
+               "type": "key",
+               "keyValue": "shift",
+               "lettersKey": "Shift",
+               "customSize": "1/12"
+            },
+            {
+               "type": "space"
+            },
+            {
+               "type": "key",
+               "keyValue": "up",
+               "lettersKey": "▲"
+            },
+            {
+               "type": "space"
+            },
+            {
+               "type": "key",
+               "keyValue": "1",
+               "lettersKey": "1"
+            },
+            {
+               "type": "key",
+               "keyValue": "2",
+               "lettersKey": "2"
+            },
+            {
+               "type": "key",
+               "keyValue": "3",
+               "lettersKey": "3"
+            },
+            {
+               "type": "key",
+               "keyValue": "ç",
+               "lettersKey": "ç",
+               "customSize": "2/4"
+            }
+         ]
+      },
+      {
+         "row": [
+            {
+               "type": "key",
+               "keyValue": "ctrl",
+               "lettersKey": "Ctrl",
+               "customSize": "1/6"
+            },
+            {
+               "type": "key",
+               "keyValue": "window",
+               "lettersKey": "🧐",
+               "customSize": "1/5"
+            },
+            {
+               "type": "key",
+               "keyValue": "alt",
+               "lettersKey": "alt",
+               "customSize": "1/5"
+            },
+            {
+               "type": "key",
+               "keyValue": "space",
+               "lettersKey": "",
+               "customSize": "space"
+            },
+            {
+               "type": "key",
+               "keyValue": "alt",
+               "lettersKey": "alt gr",
+               "customSize": "1/5"
+            },
+            {
+               "type": "key",
+               "keyValue": "fn",
+               "lettersKey": "fn",
+               "customSize": "1/5"
+            },
+            {
+               "type": "key",
+               "keyValue": "ctrl",
+               "lettersKey": "ctrl",
+               "customSize": "1/5"
+            },
+            {
+               "type": "key",
+               "keyValue": "ctrl",
+               "lettersKey": "ctrl",
+               "customSize": "1/5"
+            },
+            {
+               "type": "key",
+               "keyValue": "left",
+               "lettersKey": "◀"
+            },
+            {
+               "type": "key",
+               "keyValue": "down",
+               "lettersKey": "▼"
+            },
+            {
+               "type": "key",
+               "keyValue": "right",
+               "lettersKey": "▶"
+            },
+            {
+               "type": "key",
+               "keyValue": "right",
+               "lettersKey": "0",
+               "customSize": "1/8"
+            },
+            {
+               "type": "key",
+               "keyValue": ".",
+               "lettersKey": "."
+            }
+         ]
+      }
+   ]
+}

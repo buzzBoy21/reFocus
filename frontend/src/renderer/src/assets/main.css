@@ -1,25 +1,31 @@
+:root {
+   --first-background-color: #fff;
+}
+
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: aliceblue;
-  background-color: #ffd166ff;
-  background-size: cover;
-  user-select: none;
+   display: block;
+   overflow: auto;
+   background-image: url('default-background.jpg');
+   background-position: center;
+   background-size: fill;
+   user-select: none;
+   margin: 0;
+   height: 100vh;
+   padding-top: 1em;
+   box-sizing: border-box;
 }
 
 code {
-  font-weight: 600;
-  padding: 3px 5px;
-  border-radius: 2px;
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    SF Mono,
-    Menlo,
-    Consolas,
-    Liberation Mono,
-    monospace;
-  font-size: 85%;
+   font-weight: 600;
+   padding: 3px 5px;
+   border-radius: 2px;
+   font-family:
+      ui-monospace,
+      SFMono-Regular,
+      SF Mono,
+      Menlo,
+      Consolas,
+      Liberation Mono,
+      monospace;
+   font-size: 85%;
 }
