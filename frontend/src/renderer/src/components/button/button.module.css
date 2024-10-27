@@ -1,0 +1,30 @@
+.button-style {
+   border: 0;
+   background-color: rgba(255, 255, 255, 0.4);
+   border: 0.2em solid #fff;
+   text-align: center;
+   padding: 1em 0;
+   border-radius: 2em;
+}
+.button-style:hover {
+   cursor: pointer;
+}
+.button-style span {
+   font-family: 'Marhey', sans-serif;
+   font-variation-settings: 'wght' 400;
+   animation: changeWidthFont 1s infinite;
+}
+.button-style:hover > span {
+   font-variation-settings: 'wght' 700;
+}
+@keyframes changeWidthFont {
+   0% {
+      font-variation-settings: 'wdth' 400;
+   }
+   50% {
+      font-variation-settings: 'wdth' 700;
+   }
+   70% {
+      font-variation-settings: 'wdth' 400;
+   }
+}

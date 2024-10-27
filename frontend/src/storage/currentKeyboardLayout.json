@@ -24,7 +24,8 @@
       "backgroundColor": "hsl(97, 100%, 60%, 0.5)",
       "WebkitBoxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)",
       "MozBoxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)",
-      "boxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)"
+      "boxShadow": "inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1)",
+      "fontFamily": "Times New Roman"
    },
    "generalKeyStyle": {
       "position": "relative",
@@ -35,6 +36,7 @@
       "border-radius": "0.3em",
       "transition": "0.2s cubic-bezier(1,.39,.81,.66) background-color",
       "overflow": "hidden",
+      "fontFamily": "Times New Roman",
       ":hover": {
          "background-color": "hsl(97, 100%, 99%, 0.5)",
          "cursor": "pointer"

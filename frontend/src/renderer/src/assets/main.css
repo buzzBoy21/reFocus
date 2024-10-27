@@ -1,6 +1,18 @@
 :root {
    --first-background-color: #fff;
 }
+@font-face {
+   font-family: 'Marhey';
+   src: url('./fonts/Gluten-VariableFont.woff2') format('woff2-variations');
+   font-weight: 100 900;
+   font-display: swap;
+}
+h1 {
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 545,
+      'slnt' -5;
+}
 
 body {
    display: block;
@@ -13,19 +25,4 @@ body {
    height: 100vh;
    padding-top: 1em;
    box-sizing: border-box;
-}
-
-code {
-   font-weight: 600;
-   padding: 3px 5px;
-   border-radius: 2px;
-   font-family:
-      ui-monospace,
-      SFMono-Regular,
-      SF Mono,
-      Menlo,
-      Consolas,
-      Liberation Mono,
-      monospace;
-   font-size: 85%;
 }
