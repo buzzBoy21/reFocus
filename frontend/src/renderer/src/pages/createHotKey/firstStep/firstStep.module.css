@@ -1,0 +1,8 @@
+.title {
+   text-align: center;
+}
+.menu {
+   margin: 1rem;
+   display: flex;
+   justify-content: center;
+}

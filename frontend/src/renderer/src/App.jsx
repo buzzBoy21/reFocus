@@ -1,31 +1,36 @@
 import { useState } from 'react';
-import KeyBoard from './components/Keyboard/KeyBoard';
 import TemplateKeyBoardContext from './context/templateKeyBoardContext';
-import style from './App.module.css';
-import Button from './components/button/button';
 import NewHotKeyContext from './context/newHotKeyContext';
+import FirstStep from './pages/createHotKey/firstStep/firstStep';
+import Button from './components/button/button';
 
 function App() {
    const [step, setStep] = useState(0);
    let contentPage;
-   if (step == 0) {
-      contentPage = (
-         <>
-            <h1 className={style.primero}>Select your new hot key</h1>
-            <KeyBoard />
-         </>
-      );
-   }
    const handleButton = () => {
       setStep((prevValue) => ++prevValue);
    };
+   if (step == 0) {
+      contentPage = (
+         <>
+            <FirstStep onClickNextStep={handleButton} />
+         </>
+      );
+   } else if (step == 1) {
+      contentPage = (
+         <Button
+            onClick={() => {
+               setStep((prevValue) => --prevValue);
+            }}
+         >
+            atras
+         </Button>
+      );
+   }
    return (
       <>
          <TemplateKeyBoardContext>
             <NewHotKeyContext>{contentPage}</NewHotKeyContext>
-            <div className={style.menu}>
-               <Button onClick={handleButton}>Next step </Button>
-            </div>
          </TemplateKeyBoardContext>
       </>
    );
