@@ -6,7 +6,7 @@ export const TemplateContext = createContext();
 const TemplateKeyboardContext = ({ children }) => {
    const [templateKeyboard, setTemplateKeyboard] = useState('');
 
-   const [readFile, writeFile, readFileValue] = useJsonFileHandler('currentKeyboardLayout.json');
+   const [readFile] = useJsonFileHandler('currentKeyboardLayout.json');
 
    //When the async function readFile get the all files's value. setTemplateKeyboard will be rewrite. To the keyboard
    useEffect(() => {

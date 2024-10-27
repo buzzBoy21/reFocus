@@ -26,3 +26,18 @@ body {
    padding-top: 1em;
    box-sizing: border-box;
 }
+/* Estilo para navegadores Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+   width: 11px; /* Ancho de la barra */
+   height: 10px;
+}
+
+::-webkit-scrollbar-track {
+   background: #f6fff0; /* Color de fondo de la barra */
+   border-radius: 10px; /* Esquinas redondeadas */
+}
+
+::-webkit-scrollbar-thumb {
+   background: #26cdd7; /* Color de la parte móvil de la barra */
+   border-radius: 10px; /* Esquinas redondeadas */
+}

@@ -3,7 +3,6 @@ import style from './KeyBoard.module.css';
 import { TemplateContext } from '../../context/templateKeyBoardContext';
 import { StyleSheet, css } from 'aphrodite';
 import KeyCapOrSpace from '../KeyCapOrSpace/KeyCapOrSpace';
-import useFullScreenChange from '../../hook/useFullScreenChange';
 function KeyBoard() {
    const refNormalKey = useRef(null);
    const refKeyBoard = useRef(null);
@@ -12,13 +11,6 @@ function KeyBoard() {
    const [normalKeyBorder, setNormalKeyBorder] = useState(null);
    const [gapKeyboard, setGapKeyboard] = useState(null);
    const templateExist = template.keys != undefined && template.keys != null;
-
-   useEffect(() => {
-      const funcion = async function () {
-         console.log(await useFullScreenChange(), 'ejecucionooooo');
-      };
-      funcion();
-   }, []);
 
    //This code is online execute when element is rendering-> when template was updated
    if (template['styleKeyboard'] != undefined) {
