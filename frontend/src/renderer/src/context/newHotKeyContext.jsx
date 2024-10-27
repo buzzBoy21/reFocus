@@ -1,4 +1,4 @@
-const { createContext, useState } = require('react');
+import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 export const HotKeyContext = createContext();
 
