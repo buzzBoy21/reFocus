@@ -1,19 +1,23 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import style from './selectWindow.module.css';
 import WindowItem from '../windowItem/windowItem';
 import Loader from '../loader/loader';
 import reloadSVG from '../../assets/reload.svg';
 import generateWindowsStructure from './generateWindowsStructure';
 import PropTypes from 'prop-types';
-
+import { ObtainedWindows } from '../../context/obtainedWindowsContext';
+import { HotKeyContext } from '../../context/newHotKeyContext';
 export default function SelectWindow({
    defaultPhrase = 'no selected',
    onlySelectOne,
-   functionExecuteWhenCloseModal = () => {},
+   storeInKeyName, //used to obtain the default value, and storage in hotkey context
 }) {
-   const [currentAvailableWindows, setCurrentAvailableWindows] = useState([]);
+   const [previousWindowsName, setPreviousWindowsName] = useContext(ObtainedWindows); //to persist the data between pages
+   const [hotkeyContext, updateHotKeyContext] = useContext(HotKeyContext);
+
+   const [currentAvailableWindows, setCurrentAvailableWindows] = useState(previousWindowsName);
    const [showSelectWindow, setShowSelectWindow] = useState(false);
-   const [selectedWindow, setSelectedWindow] = useState([]); //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
+   const [selectedWindow, setSelectedWindow] = useState(hotkeyContext[storeInKeyName]); //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
    const [idOtherPressedWindow, setIdOtherPressedWindow] = useState(''); // It's used when onlySelectOne is true, to know when the person click a window
    let insideOfInputWindow = null;
 
@@ -25,7 +29,13 @@ export default function SelectWindow({
             if (newWindowsNames != undefined) {
                //when fetch is working
                setCurrentAvailableWindows((preValue) => {
-                  return generateWindowsStructure(newWindowsNames, preValue);
+                  console.log('prev', preValue);
+                  const allWindowsIdsAndWindowsName = generateWindowsStructure(
+                     newWindowsNames,
+                     preValue
+                  );
+                  setPreviousWindowsName(allWindowsIdsAndWindowsName);
+                  return allWindowsIdsAndWindowsName;
                });
             }
          };
@@ -34,11 +44,6 @@ export default function SelectWindow({
          console.log(error);
       }
    }
-   console.log('selectedwindow', selectedWindow);
-   const getPressedWindowName = () => {
-      return selectedWindow.map((idAndWidowName) => idAndWidowName['nameWindow']);
-   };
-
    //get what will be inside of inputWindow
    if (selectedWindow.length > 0) {
       insideOfInputWindow = (
@@ -70,7 +75,7 @@ export default function SelectWindow({
                      className={style.button}
                      onClick={() => {
                         setShowSelectWindow(false);
-                        functionExecuteWhenCloseModal(getPressedWindowName());
+                        updateHotKeyContext(storeInKeyName, selectedWindow);
                      }}
                   >
                      x
@@ -127,6 +132,7 @@ export default function SelectWindow({
 }
 
 SelectWindow.propTypes = {
+   defaultPhrase: PropTypes.string,
    onlySelectOne: PropTypes.bool,
-   functionExecuteWhenCloseModal: PropTypes.func,
+   storeInKeyName: PropTypes.string.isRequired,
 };

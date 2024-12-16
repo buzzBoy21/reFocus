@@ -3,7 +3,7 @@ import TemplateKeyBoardContext from './context/templateKeyBoardContext';
 import NewHotKeyContext from './context/newHotKeyContext';
 import FirstStep from './pages/createHotKey/firstStep/firstStep';
 import SecondStep from './pages/createHotKey/secondStep/secondStep';
-
+import ObtainedWindowsContext from './context/obtainedWindowsContext';
 const App = memo(function App() {
    const [step, setStep] = useState(0);
    let contentPage;
@@ -25,9 +25,11 @@ const App = memo(function App() {
    }
    return (
       <>
-         <TemplateKeyBoardContext>
-            <NewHotKeyContext>{contentPage}</NewHotKeyContext>
-         </TemplateKeyBoardContext>
+         <ObtainedWindowsContext>
+            <TemplateKeyBoardContext>
+               <NewHotKeyContext>{contentPage}</NewHotKeyContext>
+            </TemplateKeyBoardContext>
+         </ObtainedWindowsContext>
       </>
    );
 });

@@ -29,6 +29,5 @@ export default function generateWindowsStructure(newWindowsNames, prevWindowsNam
          nameWindow: windowNameToAdd,
       }))
    );
-   console.log('result', result);
    return result;
 }

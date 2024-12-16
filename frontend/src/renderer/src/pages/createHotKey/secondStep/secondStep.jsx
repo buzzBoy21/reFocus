@@ -20,6 +20,7 @@ export default function SecondStep({ goToPreviousStep }) {
       goToPreviousStep();
       updateAttribute('description', descriptionInput.current.value);
    }
+   console.log('context', valueContext.windowWhereActive);
    return (
       <>
          <div className={style.page}>
@@ -50,29 +51,22 @@ export default function SecondStep({ goToPreviousStep }) {
                         <h3>window where active</h3>
                         <SelectWindow
                            defaultPhrase="to active on all windows"
-                           functionExecuteWhenCloseModal={(newValue) => {
-                              updateAttribute('windowWhereActive', newValue);
-                           }}
+                           storeInKeyName="windowWhereActive"
                         ></SelectWindow>
                      </div>
-
                      <div>
                         <h3>window to back</h3>
                         <SelectWindow
                            defaultPhrase="stay on focused window"
                            onlySelectOne={true}
-                           functionExecuteWhenCloseModal={(newValue) => {
-                              updateAttribute('WindowWhereExecuteKeys', newValue);
-                           }}
+                           storeInKeyName="WindowWhereExecuteKeys"
                         ></SelectWindow>
                      </div>
                      <div>
                         <h3>window to focus</h3>
                         <SelectWindow
                            onlySelectOne={true}
-                           functionExecuteWhenCloseModal={(newValue) => {
-                              updateAttribute('WindowWhereExecuteKeys', newValue);
-                           }}
+                           storeInKeyName="WindowWhereExecuteKeys"
                         ></SelectWindow>
                      </div>
                   </div>
