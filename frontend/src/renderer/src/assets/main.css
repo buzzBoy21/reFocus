@@ -13,6 +13,21 @@ h1 {
       'wght' 545,
       'slnt' -5;
 }
+h2,
+h3,
+h4 {
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 500,
+      'slnt' -5;
+}
+input,
+label {
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 400,
+      'slnt' 0;
+}
 
 body {
    display: block;

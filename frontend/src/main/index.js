@@ -4,10 +4,12 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import icon from '../../resources/reFocus_icon.ico?asset';
 import readFile from './../fileOutInput/readFile';
 import writeFile from '../fileOutInput/writeFile';
+import getAllWindowNames from '../services/getAllWindowNames';
 function createWindow() {
    // Create the browser window.
    const mainWindow = new BrowserWindow({
       width: 900,
+      minWidth: 400,
       height: 670,
       show: false,
       autoHideMenuBar: true,
@@ -78,6 +80,15 @@ app.whenReady().then(() => {
          return content;
       } catch (error) {
          console.error(error);
+      }
+   });
+
+   ipcMain.handle('get-windows-names', async (event) => {
+      try {
+         return await getAllWindowNames();
+      } catch (error) {
+         console.error('Error fetching window names:', error);
+         throw error;
       }
    });
 

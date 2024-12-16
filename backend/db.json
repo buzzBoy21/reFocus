@@ -1,7 +1,7 @@
 {
     "allStorage": [
         {
-            "key_to_active_auto_hot_keys": "shift+a",
+            "key_to_active_auto_hot_keys": "shift+w+a+b",
             "hot_key_name": "Open Application",
             "hot_key_description": "This hotkey opens the specified application.",
             "key_to_press_when_focused": "b",

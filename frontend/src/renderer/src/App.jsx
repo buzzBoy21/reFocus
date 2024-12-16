@@ -1,31 +1,27 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import TemplateKeyBoardContext from './context/templateKeyBoardContext';
 import NewHotKeyContext from './context/newHotKeyContext';
 import FirstStep from './pages/createHotKey/firstStep/firstStep';
-import Button from './components/button/button';
+import SecondStep from './pages/createHotKey/secondStep/secondStep';
 
-function App() {
+const App = memo(function App() {
    const [step, setStep] = useState(0);
    let contentPage;
-   const handleButton = () => {
+   const handleNextButton = () => {
       setStep((prevValue) => ++prevValue);
    };
+   const handlePrevButton = () => {
+      setStep((prevValue) => --prevValue);
+   };
+
    if (step == 0) {
       contentPage = (
          <>
-            <FirstStep onClickNextStep={handleButton} />
+            <FirstStep passToNextStep={handleNextButton} />
          </>
       );
    } else if (step == 1) {
-      contentPage = (
-         <Button
-            onClick={() => {
-               setStep((prevValue) => --prevValue);
-            }}
-         >
-            atras
-         </Button>
-      );
+      contentPage = <SecondStep goToPreviousStep={handlePrevButton} />;
    }
    return (
       <>
@@ -34,6 +30,6 @@ function App() {
          </TemplateKeyBoardContext>
       </>
    );
-}
+});
 
 export default App;

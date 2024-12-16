@@ -5,15 +5,36 @@ import createSize from './defaultSize';
 import styleCSS from './KeyCap.module.css';
 
 const KeyCapOrSpace = forwardRef(function KeyCapOrSpace(props, ref) {
-   const { children, type, keyValue, size, normalSize, style, letterStyle, pressedStyle } = props;
+   const {
+      children,
+      type,
+      keyValue,
+      size,
+      normalSize,
+      style,
+      letterStyle,
+      pressedStyle,
+      onClick,
+      defaultPressed = false, //when the key was pressed, in other time. For example the when person press nextStep and then came back the keyboard has to mount again
+   } = props;
 
-   const [isPressed, setIsPressed] = useState(false);
+   const [isPressed, setIsPressed] = useState(defaultPressed);
    let styles = '';
 
    //to change to active the pressed class
    async function handlerKey() {
       setIsPressed((prev) => !prev);
-      console.log(keyValue);
+      if (isPressed) {
+         //if is pressed means the value is in state allKeyPressed in FirstStep component
+         //then we have to remove because the state will change to false
+         //this onClick is the setAllKeyPressed function from FirstStep
+         onClick((prevValue) => {
+            return prevValue.filter((value) => value != keyValue);
+         });
+      } else {
+         //add new value
+         onClick((prevValue) => [...prevValue, keyValue]);
+      }
    }
 
    //make the classes that will be used

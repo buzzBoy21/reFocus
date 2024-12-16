@@ -1,0 +1,93 @@
+.inputWindow {
+   position: relative;
+   display: block;
+   width: 10em;
+   aspect-ratio: 4/3;
+   border: 0.2em solid #fff;
+   border-radius: 2em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: transparent;
+   padding: 0;
+   &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: absolute;
+      background-color: #ffffff43;
+      border-radius: 2em;
+   }
+   &:hover {
+      cursor: pointer;
+      background-color: #ffffff92;
+   }
+   & > .phrase {
+      font-family: 'Marhey';
+   }
+}
+.emergedWindow {
+   display: block;
+   border-radius: 1em;
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   z-index: 1;
+   margin: auto;
+   padding: 1em;
+   max-height: 90vh;
+   width: 70vw;
+   background-color: #ffffff80;
+   backdrop-filter: blur(5px);
+   overflow-y: auto;
+}
+.actions {
+   display: flex;
+   flex-direction: row-reverse;
+   gap: 1em;
+   z-index: 1;
+
+   border-radius: 2em;
+   & > button {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   }
+}
+.windowToFocus {
+   margin-top: 1em;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: stretch;
+   gap: 1em;
+   justify-content: flex-start;
+   /* background-image: url(../../assets/default-background.jpg); */
+
+   background-position: center;
+   background-size: fill;
+}
+.button {
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 545,
+      'slnt' -5;
+
+   background-color: transparent;
+   border: 0.3em solid #fff;
+   width: 3em;
+   border-radius: 100%;
+   aspect-ratio: 1/1;
+   &:hover {
+      cursor: pointer;
+      background-color: #ffffff98;
+   }
+}
+
+@media (width<900px) {
+   .emergedWindow {
+      width: 80vw;
+   }
+}

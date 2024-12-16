@@ -9,6 +9,9 @@ const api = {
    //To call this -> use window.api.writeFileCustom
    writeFileCustom: (filePath, content) => ipcRenderer.invoke('write-file', filePath, content),
    isFullscreen: () => ipcRenderer.invoke('fullScreenChecking'),
+   services: {
+      getAllWindowNames: () => ipcRenderer.invoke('get-windows-names'),
+   },
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

@@ -1,0 +1,48 @@
+/* DynamicSpinner.module.css */
+
+.spinner {
+   width: 4rem;
+   height: 4rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.spinnerCenter {
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   margin: auto;
+}
+.normalSpinner {
+   position: relative;
+}
+
+/* Primer círculo de rebote */
+.doubleBounce {
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   background-color: rgba(0, 0, 0, 0.2);
+   opacity: 0.6;
+   position: absolute;
+   animation: bounce 2s ease-in-out infinite;
+}
+
+/* Segundo círculo de rebote */
+.doubleBounce:nth-child(2) {
+   animation-delay: -1s;
+   background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto de rebote para cada círculo */
+@keyframes bounce {
+   0%,
+   100% {
+      transform: scale(0);
+   }
+   50% {
+      transform: scale(1);
+   }
+}

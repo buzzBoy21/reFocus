@@ -1,0 +1,54 @@
+.labelInputKeyboard {
+   display: block;
+   margin-bottom: 0.5em;
+}
+.inputText {
+   display: block;
+   background-color: #ffffff43;
+   color: rgb(0, 0, 0);
+   border: 0.2em solid #ffffff;
+   padding: 10px;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+}
+.inputText:user-invalid {
+   display: block;
+
+   border-color: red;
+}
+.emergedWindows {
+   display: block;
+   border-radius: 1em;
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   z-index: 1;
+   margin: auto;
+   padding: 1em;
+   max-height: 90vh;
+   width: 90vw;
+   background-color: #ffffffac;
+   backdrop-filter: blur(7px);
+   overflow-y: auto;
+}
+.button {
+   display: block;
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 545,
+      'slnt' -5;
+
+   background-color: transparent;
+   border: 0.3em solid #fff;
+   width: 3em;
+   border-radius: 100%;
+   aspect-ratio: 1/1;
+   margin-bottom: 2em;
+   &:hover {
+      cursor: pointer;
+      background-color: #ffffff98;
+   }
+}

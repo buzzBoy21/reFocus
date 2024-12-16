@@ -1,0 +1,35 @@
+.containerWindowItem {
+   position: relative;
+   background-color: rgba(255, 255, 255, 0.8);
+   border: 0.3em solid #fff;
+   border-radius: 1em;
+   width: 20vw;
+   max-width: 18em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow-x: auto;
+   & > p {
+      font-family: 'Marhey';
+   }
+   & > img {
+      position: absolute;
+      z-index: -1;
+      height: 90%;
+      width: auto;
+      max-width: 90%;
+      object-fit: contain;
+   }
+}
+
+@media (width<900px) {
+   .containerWindowItem > p {
+      font-size: 0.8em;
+   }
+}
+@media (width<700px) {
+   .containerWindowItem > p {
+      font-size: 0.8em;
+      font-variation-settings: 'wght' 300;
+   }
+}

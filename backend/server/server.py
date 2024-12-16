@@ -11,7 +11,14 @@ class HandleServer(BaseHTTPRequestHandler):
     getRoutes = GETroutes
     postRoutes = POSTroutes
   
-
+    def end_headers(self):
+           # Agregar encabezado Content Security Policy
+        self.send_header("Content-Security-Policy", "default-src 'self'; connect-src 'self' http://localhost:8080; script-src 'self'; style-src 'self'")
+        # Agregar encabezados CORS
+        self.send_header("Access-Control-Allow-Origin", "*")  # Permitir todos los orígenes (cambia '*' por tu origen específico si es necesario)
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")  # Métodos permitidos
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")  # Encabezados permitidos
+        super().end_headers()
 
     def initServer(self):
         self.server.serve_forever()

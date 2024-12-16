@@ -1,0 +1,25 @@
+.input-column {
+   display: flex;
+   flex-direction: column;
+   gap: 1em;
+   width: fit-content;
+}
+.input-row {
+   display: flex;
+   align-items: center;
+   gap: 1em;
+}
+.inputText {
+   display: block;
+   background-color: #ffffff43;
+   color: rgb(0, 0, 0);
+   border: 0.2em solid #ffffff;
+   padding: 10px;
+   border-radius: 5px;
+   font-size: 16px;
+}
+.inputText:user-invalid {
+   display: block;
+
+   border-color: red;
+}

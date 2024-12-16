@@ -1,0 +1,148 @@
+/* Switch.module.css */
+.mainDiv {
+   position: relative;
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+   gap: 0.625em;
+   width: 100%;
+}
+.switchContainer {
+   flex-grow: 1;
+   display: flex;
+   justify-content: flex-end;
+}
+.switch {
+   position: relative;
+   display: inline-block;
+   width: 3.75em;
+   height: 2.125em;
+}
+
+.switch input {
+   opacity: 0;
+   width: 0;
+   height: 0;
+}
+
+.slider {
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: hsla(0, 0%, 80%, 0.4);
+   transition: 0.4s;
+   border-radius: 2.125em;
+}
+
+.slider:before {
+   position: absolute;
+   content: '';
+   height: 1.625em;
+   width: 1.625em;
+   left: 0.25em;
+   bottom: 0.25em;
+   background-color: white;
+   transition: 0.4s;
+   border-radius: 50%;
+}
+
+input:checked + .slider {
+   background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+   transform: translateX(26px);
+}
+/* Tooltip Styles */
+.tooltip {
+   visibility: hidden;
+   background-color: hsla(0, 0%, 100%, 0.4);
+   backdrop-filter: blur(9px);
+   border-radius: 1em;
+   font-size: 0.8em;
+   color: #000000;
+   text-align: center;
+   border-radius: 0.25em;
+   padding: 0.5em 0.5em;
+   display: block;
+   position: absolute;
+   z-index: 1;
+   left: calc(100% + 1em);
+   width: max-content;
+   max-width: 20em;
+   transition: visibility 0.3s ease;
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 300,
+      'slnt' 0;
+   font-size: 0.8em;
+}
+
+.label:hover ~ .tooltip {
+   transition-delay: 1s;
+   visibility: visible;
+}
+
+.label {
+   font-size: 1em;
+   color: #333;
+   cursor: help;
+}
+
+@media screen and (max-width: 1920px) {
+   .switch {
+      width: 2.475em;
+      height: 1.663em;
+   }
+   .slider:before {
+      position: absolute;
+      content: '';
+      height: 1.25em;
+      width: 1.25em;
+      left: 0.2em;
+      bottom: 0.225em;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+   }
+   input:checked + .slider:before {
+      transform: translateX(0.838em);
+   }
+}
+@media (width<800px) {
+   .tooltip {
+      max-width: 10em;
+   }
+}
+@media screen and (max-width: 600px) {
+   .switch {
+      width: 2.075em; /* 1.875em + 0.2em */
+      height: 1.263em; /* 1.063em + 0.2em */
+   }
+   .slider:before {
+      position: absolute;
+      content: '';
+      height: 0.95em;
+      width: 0.95em;
+      left: 0.125em;
+      bottom: 0.125em;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+   }
+
+   input:checked + .slider:before {
+      transform: translateX(0.813em);
+   }
+}
+@media (width<500px) {
+   .tooltip {
+      max-width: 100%;
+      left: 0;
+      top: 100%;
+      background-color: #f1f1f1;
+   }
+}

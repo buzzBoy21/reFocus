@@ -17,11 +17,13 @@ export const HotKeyContext = createContext();
 
 export default function NewHotKeyContext({ children }) {
    const [valueContext, setValueContext] = useState({
-      hotKey: null,
+      hotKey: '',
       nameHotKey: null,
+      description: '',
       keyToPress: null,
-      windowWhereActive: [],
-      WindowWhereExecuteKeys: null,
+      windowWhereActive: [], //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
+      WindowWhereExecuteKeys: [], //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
+      executeOnTargetWindow: false,
       intelligenceSearch: true,
    });
    /**
@@ -40,9 +42,19 @@ export default function NewHotKeyContext({ children }) {
          return { ...prevValue, [attributeName]: newValue };
       });
    }
-
+   function resetValues() {
+      setValueContext({
+         hotKey: '',
+         nameHotKey: null,
+         keyToPress: null,
+         windowWhereActive: [],
+         WindowWhereExecuteKeys: null,
+         executeOnTargetWindow: false,
+         intelligenceSearch: true,
+      });
+   }
    return (
-      <HotKeyContext.Provider value={[valueContext, updateAttribute]}>
+      <HotKeyContext.Provider value={[valueContext, updateAttribute, resetValues]}>
          {children}
       </HotKeyContext.Provider>
    );

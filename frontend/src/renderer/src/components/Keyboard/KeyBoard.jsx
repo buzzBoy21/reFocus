@@ -3,12 +3,13 @@ import style from './KeyBoard.module.css';
 import { TemplateContext } from '../../context/templateKeyBoardContext';
 import { StyleSheet, css } from 'aphrodite';
 import KeyCapOrSpace from '../KeyCapOrSpace/KeyCapOrSpace';
-function KeyBoard({ whereStorPressedKeyValues }) {
+import PropTypes from 'prop-types';
+
+function KeyBoard({ pressKey, keysPressedByDefault }) {
    const refNormalKey = useRef(null);
    const refKeyBoard = useRef(null);
    const [template] = useContext(TemplateContext);
 
-   //---
    const [normalKeyHeight, setNormalKeyHeight] = useState(null); //store the current normalKey height
    const [normalKeyBorder, setNormalKeyBorder] = useState(null); //store the current normalKey width border
    const [gapKeyboard, setGapKeyboard] = useState(null); //store the current normalKey height
@@ -37,7 +38,6 @@ function KeyBoard({ whereStorPressedKeyValues }) {
          top: parseFloat(borderTop.substring(0, borderTop.length - 2)), //remove px word
          bottom: parseFloat(borderBottom.substring(0, borderBottom.length - 2)), //remove px word
       };
-      console.log(getComputedStyle(refNormalKey.current), 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
       const gap = getComputedStyle(refKeyBoard.current).gap;
       const gapParse = parseFloat(gap.substring(0, height.length - 2));
@@ -74,7 +74,13 @@ function KeyBoard({ whereStorPressedKeyValues }) {
                //only ref the key which have referenceKey property
                ref={keyAttribute.referenceKey == undefined ? null : refNormalKey}
                key={index}
+               onClick={pressKey}
                keyValue={keyAttribute.keyValue}
+               defaultPressed={
+                  keysPressedByDefault.find((element) => keyAttribute.keyValue === element)
+                     ? true
+                     : false
+               }
                pressedStyle={keyAttribute.pressedStyle ?? template.generalPressedStyle}
                normalSize={{
                   normalSizeFromTemplate: template.normalKeySize,
@@ -137,5 +143,10 @@ function KeyBoard({ whereStorPressedKeyValues }) {
       </div>
    );
 }
+
+KeyBoard.propTypes = {
+   pressKey: PropTypes.func.isRequired,
+   keysPressedByDefault: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default KeyBoard;

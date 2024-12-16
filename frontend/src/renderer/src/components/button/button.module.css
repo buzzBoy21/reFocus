@@ -12,10 +12,10 @@
 .button-style span {
    font-family: 'Marhey', sans-serif;
    font-variation-settings: 'wght' 400;
-   animation: changeWidthFont 1s infinite;
 }
 .button-style:hover > span {
    font-variation-settings: 'wght' 700;
+   animation: changeWidthFont 1s infinite;
 }
 @keyframes changeWidthFont {
    0% {

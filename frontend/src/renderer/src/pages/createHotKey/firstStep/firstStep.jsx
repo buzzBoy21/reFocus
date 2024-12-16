@@ -1,26 +1,39 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Button from '../../../components/button/button';
 import KeyBoard from '../../../components/Keyboard/KeyBoard';
 import style from './firstStep.module.css';
 import PropTypes from 'prop-types';
 import { HotKeyContext } from '../../../context/newHotKeyContext';
 
-export default function FirstStep({ onClickNextStep }) {
+export default function FirstStep({ passToNextStep }) {
    const [valueContext, updateContext] = useContext(HotKeyContext);
-   function setContext(newValue) {
-      updateContext('hotKey', newValue);
+   const [allKeyPressed, setAllKeyPressed] = useState(
+      //when the key was pressed, in other time. For example the when person press nextStep and then came back the keyboard has to mount again
+      valueContext.hotKey === '' ? [] : valueContext.hotKey.split('+')
+   );
+
+   function handleButton() {
+      //You have to press at least 1 key
+      if (allKeyPressed.length > 0) {
+         updateContext('hotKey', allKeyPressed.join('+'));
+         //pass to the next step
+         passToNextStep();
+      } else {
+         //this will be said by Mibo (key avatar)
+         console.log('press at least one key !!! 😓😓');
+      }
    }
 
    return (
       <>
          <h1 className={style.title}>Select your new hot key</h1>
-         <KeyBoard whereStorPressedKeyValues={setContext} />
+         <KeyBoard pressKey={setAllKeyPressed} keysPressedByDefault={allKeyPressed} />
          <div className={style.menu}>
-            <Button onClick={onClickNextStep}>Other button</Button>
+            <Button onClick={handleButton}>Other button</Button>
          </div>
       </>
    );
 }
 FirstStep.propTypes = {
-   onClickNextStep: PropTypes.func.isRequired,
+   passToNextStep: PropTypes.func.isRequired,
 };

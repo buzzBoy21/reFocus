@@ -61,7 +61,6 @@ export default function createSize(size, normalSizeKey) {
             //- states was updated
             //- contenxt was update (this means was changed the layout keyboard)
             if (border != null && keyboardGap != null && normalSize != null) {
-               console.log(border);
                const pattern = /^(?!0)(\d+)\/(?!0)(\d+)$/;
                const isValid = pattern.test(size);
                const [heightSize, widthSize] = size.split('/');
@@ -84,7 +83,6 @@ export default function createSize(size, normalSizeKey) {
 
                if (isValid) {
                   result = height;
-                  // console.log(heightNormalKey, parseInt(heightSize), keyboardGap, 'ssssssssss');
                } else {
                   throw new Error(
                      'size: Online admit: \nnormal\nwide-horizontal\nwide-vertical\nsquare\nspace\nnumber/number -> the number must be HIGHER than 0 and NO DECIMAL number'
