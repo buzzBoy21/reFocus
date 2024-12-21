@@ -5,6 +5,7 @@ import icon from '../../resources/reFocus_icon.ico?asset';
 import readFile from './../fileOutInput/readFile';
 import writeFile from '../fileOutInput/writeFile';
 import getAllWindowNames from '../services/getAllWindowNames';
+import postCreateHotKey from '../services/createHotKey';
 function createWindow() {
    // Create the browser window.
    const mainWindow = new BrowserWindow({
@@ -86,6 +87,14 @@ app.whenReady().then(() => {
    ipcMain.handle('get-windows-names', async (event) => {
       try {
          return await getAllWindowNames();
+      } catch (error) {
+         console.error('Error fetching window names:', error);
+         throw error;
+      }
+   });
+   ipcMain.handle('post-create-hot-key', async (event, contextValue) => {
+      try {
+         return await postCreateHotKey(contextValue);
       } catch (error) {
          console.error('Error fetching window names:', error);
          throw error;

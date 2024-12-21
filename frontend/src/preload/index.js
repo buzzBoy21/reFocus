@@ -11,6 +11,7 @@ const api = {
    isFullscreen: () => ipcRenderer.invoke('fullScreenChecking'),
    services: {
       getAllWindowNames: () => ipcRenderer.invoke('get-windows-names'),
+      postCreateHotKey: (contextValue) => ipcRenderer.invoke('post-create-hot-key', contextValue),
    },
 };
 

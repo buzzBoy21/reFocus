@@ -7,18 +7,34 @@ import SelectWindow from '../../../components/selectWindow/selectWindow';
 import InputText from '../../../components/inputText/inputText';
 import TextArea from '../../../components/textArea/textArea';
 import InputKeyBoard from '../../../components/inputKeyBoard/InputKeyBoard';
+import checkAllInputToCreate from './checkAllInputToCreate';
 
 export default function SecondStep({ goToPreviousStep }) {
    const [valueContext, updateAttribute, resetContext] = useContext(HotKeyContext);
+   const nameInput = useRef();
    const descriptionInput = useRef();
 
-   function createHotKey() {
-      goToPreviousStep();
-      resetContext();
+   async function createHotKey() {
+      updateAttribute('description', descriptionInput.current.value);
+      updateAttribute('nameHotKey', nameInput.current.value);
+      try {
+         if (checkAllInputToCreate(valueContext)) {
+            const isOk = await window.api.services.postCreateHotKey(valueContext);
+            console.log('fufa', isOk);
+            if (isOk) {
+               goToPreviousStep();
+               resetContext();
+            }
+         }
+      } catch (error) {
+         console.log(error.message);
+      }
    }
    function goToBack() {
       goToPreviousStep();
       updateAttribute('description', descriptionInput.current.value);
+      updateAttribute('nameHotKey', nameInput.current.value);
+      console.log(valueContext);
    }
    console.log('context', valueContext.windowWhereActive);
    return (
@@ -26,7 +42,11 @@ export default function SecondStep({ goToPreviousStep }) {
          <div className={style.page}>
             <div className={style.content}>
                <section>
-                  <InputText labelText="Name of HoyKey" />
+                  <InputText
+                     labelText="Name of HoyKey"
+                     ref={nameInput}
+                     defaultValue={valueContext.nameHotKey}
+                  />
                   <TextArea
                      labelText="Description hotkey"
                      defaultValue={valueContext.description}
@@ -35,14 +55,16 @@ export default function SecondStep({ goToPreviousStep }) {
                </section>
                <section>
                   <h2>keys</h2>
-                  <InputKeyBoard
-                     keyContextToUpdate="hotKey"
-                     label="to active hot key"
-                  ></InputKeyBoard>
-                  <InputKeyBoard
-                     keyContextToUpdate="hotKey"
-                     label="to active hot key"
-                  ></InputKeyBoard>
+                  <div>
+                     <InputKeyBoard
+                        keyContextToUpdate="hotKey"
+                        label="to active hot key*"
+                     ></InputKeyBoard>
+                     <InputKeyBoard
+                        keyContextToUpdate="keyToPress"
+                        label="Keys will auto-press"
+                     ></InputKeyBoard>
+                  </div>
                </section>
                <section>
                   <h2>Select window</h2>
@@ -59,35 +81,41 @@ export default function SecondStep({ goToPreviousStep }) {
                         <SelectWindow
                            defaultPhrase="stay on focused window"
                            onlySelectOne={true}
-                           storeInKeyName="WindowWhereExecuteKeys"
+                           storeInKeyName="windowToBack"
                         ></SelectWindow>
                      </div>
                      <div>
                         <h3>window to focus</h3>
                         <SelectWindow
+                           defaultPhrase="no selected*"
                            onlySelectOne={true}
-                           storeInKeyName="WindowWhereExecuteKeys"
+                           storeInKeyName="windowToFocus"
                         ></SelectWindow>
                      </div>
                   </div>
                </section>
                <section className={style.switchSection}>
                   <h2>Extra Options</h2>
-                  <Switch
-                     execute={() => {
-                        updateAttribute('executeOnTargetWindow', !valueContext.intelligenceSearch);
-                     }}
-                     label="Execute on target window"
-                     tooltip="When you are focusing the target window, You can use the Hotkey"
-                  ></Switch>
-                  <Switch
-                     execute={() => {
-                        updateAttribute('intelligenceSearch', !valueContext.intelligenceSearch);
-                     }}
-                     label="Active flexible search"
-                     tooltip="It's going to focus on the windows whose names match the name of the window to focus on. For example, if we select 'net' and there is a window named 'Netflix - La casa de papel,' the program will focus on that window because 'Netflix' contains 'net.'"
-                     initialState={true}
-                  ></Switch>
+                  <div>
+                     <Switch
+                        execute={() => {
+                           updateAttribute(
+                              'executeOnTargetWindow',
+                              !valueContext.intelligenceSearch
+                           );
+                        }}
+                        label="Execute on target window"
+                        tooltip="When you are focusing the target window, You can use the Hotkey"
+                     ></Switch>
+                     <Switch
+                        execute={() => {
+                           updateAttribute('intelligenceSearch', !valueContext.intelligenceSearch);
+                        }}
+                        label="Active flexible search"
+                        tooltip="It's going to focus on the windows whose names match the name of the window to focus on. For example, if we select 'net' and there is a window named 'Netflix - La casa de papel,' the program will focus on that window because 'Netflix' contains 'net.'"
+                        initialState={true}
+                     ></Switch>
+                  </div>
                </section>
                <footer className={style.buttonsFooter}>
                   <Button animationDuration={'2s'} onClick={goToBack}>

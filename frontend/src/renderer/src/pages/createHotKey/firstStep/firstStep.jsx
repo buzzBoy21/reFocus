@@ -29,7 +29,7 @@ export default function FirstStep({ passToNextStep }) {
          <h1 className={style.title}>Select your new hot key</h1>
          <KeyBoard pressKey={setAllKeyPressed} keysPressedByDefault={allKeyPressed} />
          <div className={style.menu}>
-            <Button onClick={handleButton}>Other button</Button>
+            <Button onClick={handleButton}>Next step</Button>
          </div>
       </>
    );

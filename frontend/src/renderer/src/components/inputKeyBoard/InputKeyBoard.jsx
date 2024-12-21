@@ -12,23 +12,32 @@ const InputKeyBoard = forwardRef(function InputKeyBoard({ label = '', keyContext
       valueContext[keyContextToUpdate] === '' ? [] : valueContext[keyContextToUpdate].split('+')
    );
 
-   console.log(showKeyboard);
    return (
       <>
-         <label className={style.labelInputKeyboard}>{label}</label>
-         <input
-            className={style.inputText}
-            type="text"
-            ref={ref}
-            onClick={() => {
-               setShowKeyboard(true);
-            }}
-            readOnly
-            value={KeyPressed.join(' + ')}
-         />
+         <div>
+            <label className={style.labelInputKeyboard}>{label}</label>
+            <div
+               ref={ref}
+               className={style.inputText}
+               onClick={() => {
+                  setShowKeyboard(true);
+               }}
+            >
+               {KeyPressed.map((keyValue, index) =>
+                  ++index === KeyPressed.length && KeyPressed.length > 0 ? (
+                     keyValue
+                  ) : (
+                     <>
+                        {keyValue}
+                        <span> + </span>
+                     </>
+                  )
+               )}
+            </div>
+         </div>
          <div className={style.emergedWindow}></div>
          {showKeyboard && (
-            <div className={style.emergedWindows} id="cacatua">
+            <div className={style.emergedWindows}>
                <button
                   className={style.button}
                   onClick={() => {

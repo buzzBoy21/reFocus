@@ -41,6 +41,10 @@ body {
    padding-top: 1em;
    box-sizing: border-box;
 }
+* {
+   box-sizing: border-box;
+}
+
 /* Estilo para navegadores Webkit (Chrome, Safari) */
 ::-webkit-scrollbar {
    width: 11px; /* Ancho de la barra */

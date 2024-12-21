@@ -10,24 +10,26 @@ const TextArea = forwardRef(function TextArea(
 
    return (
       <>
-         <div className={style.extraInfo}>
-            <label htmlFor="textArea" className={style.textAreaLabel}>
-               {labelText}
-            </label>
-            <p className={style.remainingWord}>Remaning letters: {remainingWord}</p>
+         <div>
+            <div className={style.extraInfo}>
+               <label htmlFor="textArea" className={style.textAreaLabel}>
+                  {labelText}
+               </label>
+               <p className={style.remainingWord}>Remaning letters: {remainingWord}</p>
+            </div>
+            <textarea
+               id="textArea"
+               ref={ref}
+               className={style.textArea}
+               placeholder={placeHolder}
+               maxLength={maxLength}
+               onChange={(e) => {
+                  setValueTextArea(e.target.value);
+                  setRemainingWord(maxLength - parseInt(e.target.value.length));
+               }}
+               defaultValue={valueTextArea}
+            ></textarea>
          </div>
-         <textarea
-            id="textArea"
-            ref={ref}
-            className={style.textArea}
-            placeholder={placeHolder}
-            maxLength={maxLength}
-            onChange={(e) => {
-               setValueTextArea(e.target.value);
-               setRemainingWord(maxLength - parseInt(e.target.value.length));
-            }}
-            defaultValue={valueTextArea}
-         ></textarea>
       </>
    );
 });

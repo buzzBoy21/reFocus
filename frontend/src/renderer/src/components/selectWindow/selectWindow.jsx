@@ -18,7 +18,12 @@ export default function SelectWindow({
    const [currentAvailableWindows, setCurrentAvailableWindows] = useState(previousWindowsName);
    const [showSelectWindow, setShowSelectWindow] = useState(false);
    const [selectedWindow, setSelectedWindow] = useState(hotkeyContext[storeInKeyName]); //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
-   const [idOtherPressedWindow, setIdOtherPressedWindow] = useState(''); // It's used when onlySelectOne is true, to know when the person click a window
+   const [idOtherPressedWindow, setIdOtherPressedWindow] = useState(
+      onlySelectOne && hotkeyContext[storeInKeyName].length > 0
+         ? hotkeyContext[storeInKeyName][0].id || ''
+         : '' // default value from the context, used to get window id when you are rerendering the component this is when you press back and press next step
+   ); // It's used when onlySelectOne is true, to know when the person click a window
+
    let insideOfInputWindow = null;
 
    function fetchGetAllWindowNames() {

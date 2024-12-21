@@ -8,7 +8,7 @@ import { forwardRef } from 'react';
  * @param {string} props.orientation row to have flex-direction:row, column:> flex-direction:column
  */
 const InputText = forwardRef(function InputText(
-   { labelText, placeholder = '', regx = null, orientation = 'row' },
+   { labelText, placeholder = '', regx = null, orientation = 'row', defaultValue },
    ref
 ) {
    return (
@@ -31,6 +31,7 @@ const InputText = forwardRef(function InputText(
                className={style.inputText}
                placeholder={placeholder}
                pattern={regx}
+               defaultValue={defaultValue}
             />
          </div>
       </>

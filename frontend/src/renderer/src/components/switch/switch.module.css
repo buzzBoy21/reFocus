@@ -87,7 +87,8 @@ input:checked + .slider:before {
 }
 
 .label {
-   font-size: 1em;
+   font-family: 'Marhey';
+   font-size: 0.85em;
    color: #333;
    cursor: help;
 }

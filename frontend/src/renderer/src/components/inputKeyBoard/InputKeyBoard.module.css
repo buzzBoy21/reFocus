@@ -3,6 +3,10 @@
    margin-bottom: 0.5em;
 }
 .inputText {
+   font-family: 'Marhey';
+   font-variation-settings:
+      'wght' 400,
+      'slnt' 0;
    display: block;
    background-color: #ffffff43;
    color: rgb(0, 0, 0);
@@ -11,6 +15,14 @@
    border-radius: 5px;
    font-size: 16px;
    cursor: pointer;
+   min-height: 2.41359375em;
+   min-width: 20dvw;
+   & > span {
+      font-variation-settings:
+         'wght' 200,
+         'slnt' 0;
+      color: hsl(50, 60%, 40%);
+   }
 }
 .inputText:user-invalid {
    display: block;
@@ -29,7 +41,7 @@
    margin: auto;
    padding: 1em;
    max-height: 90vh;
-   width: 90vw;
+   width: 95vw;
    background-color: #ffffffac;
    backdrop-filter: blur(7px);
    overflow-y: auto;
