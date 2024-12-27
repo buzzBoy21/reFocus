@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import style from './button.module.css';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -12,21 +12,29 @@ export default function Button({
    className = '',
    animation = true,
 }) {
-   const allLetter = children.split('');
-   const allLetterDelay = {};
+   let allLetter = null;
+   let allLetterDelay = null;
+   let widthInPx = null;
+   let key = null;
+   let styles = null;
 
-   //when animation is playing the width doen't change
-   const widthInPx = allLetter.length * widthPerLetter;
+   if (typeof children === 'string') {
+      allLetter = children.split('');
+      allLetterDelay = {};
 
-   for (let index = 0; index < allLetter.length; index++) {
-      const key = 'delayAnimation' + index;
-      allLetterDelay[key] = {
-         'animation-delay': `${index * 100}ms`,
-         fontSize: fontSize,
-         animationDuration: animationDuration && animationDuration, //If animationDuration is null aphrodite will not use it
-      };
+      //when animation is playing the width doen't change
+      widthInPx = allLetter.length * widthPerLetter;
+
+      for (let index = 0; index < allLetter.length; index++) {
+         key = 'delayAnimation' + index;
+         allLetterDelay[key] = {
+            'animation-delay': `${index * 100}ms`,
+            fontSize: fontSize,
+            animationDuration: animationDuration && animationDuration, //If animationDuration is null aphrodite will not use it
+         };
+      }
+      styles = StyleSheet.create(allLetterDelay);
    }
-   const styles = StyleSheet.create(allLetterDelay);
 
    return (
       <button
