@@ -36,6 +36,3 @@ export default function FirstStep() {
       </>
    );
 }
-FirstStep.propTypes = {
-   passToNextStep: PropTypes.func.isRequired,
-};
