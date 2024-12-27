@@ -33,7 +33,7 @@ function Sidebar() {
          </header>
          <nav>
             <NavLink to={'/all-hot-keys'}>
-               <Button animationDuration={'1.8s'}>all hot keys</Button>
+               <Button animationDuration={'2s'}>created hot keys</Button>
             </NavLink>
             <NavLink to={'/settings'}>
                <Button animationDuration={'1.3s'}>Settings</Button>
