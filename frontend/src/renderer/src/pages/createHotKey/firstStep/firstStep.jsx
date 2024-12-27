@@ -4,8 +4,10 @@ import KeyBoard from '../../../components/Keyboard/KeyBoard';
 import style from './firstStep.module.css';
 import PropTypes from 'prop-types';
 import { HotKeyContext } from '../../../context/newHotKeyContext';
+import { useNavigate } from 'react-router';
+export default function FirstStep() {
+   const navigate = useNavigate();
 
-export default function FirstStep({ passToNextStep }) {
    const [valueContext, updateContext] = useContext(HotKeyContext);
    const [allKeyPressed, setAllKeyPressed] = useState(
       //when the key was pressed, in other time. For example the when person press nextStep and then came back the keyboard has to mount again
@@ -17,7 +19,7 @@ export default function FirstStep({ passToNextStep }) {
       if (allKeyPressed.length > 0) {
          updateContext('hotKey', allKeyPressed.join('+'));
          //pass to the next step
-         passToNextStep();
+         navigate('/second-step');
       } else {
          //this will be said by Mibo (key avatar)
          console.log('press at least one key !!! 😓😓');

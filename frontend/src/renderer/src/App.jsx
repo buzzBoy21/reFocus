@@ -4,30 +4,26 @@ import NewHotKeyContext from './context/newHotKeyContext';
 import FirstStep from './pages/createHotKey/firstStep/firstStep';
 import SecondStep from './pages/createHotKey/secondStep/secondStep';
 import ObtainedWindowsContext from './context/obtainedWindowsContext';
-const App = memo(function App() {
-   const [step, setStep] = useState(0);
-   let contentPage;
-   const handleNextButton = () => {
-      setStep((prevValue) => ++prevValue);
-   };
-   const handlePrevButton = () => {
-      setStep((prevValue) => --prevValue);
-   };
+import Header from './components/Header/Header';
+import Sidebar from './components/sidebar/sidebar';
+import ShowSideBarContext from './context/ShowSideBarContext';
+import { HashRouter, Route, Routes } from 'react-router';
 
-   if (step == 0) {
-      contentPage = (
-         <>
-            <FirstStep passToNextStep={handleNextButton} />
-         </>
-      );
-   } else if (step == 1) {
-      contentPage = <SecondStep goToPreviousStep={handlePrevButton} />;
-   }
+const App = memo(function App() {
    return (
       <>
          <ObtainedWindowsContext>
             <TemplateKeyBoardContext>
-               <NewHotKeyContext>{contentPage}</NewHotKeyContext>
+               <ShowSideBarContext>
+                  <Header></Header>
+                  <Sidebar></Sidebar>
+               </ShowSideBarContext>
+               <NewHotKeyContext>
+                  <Routes>
+                     <Route path="/" element={<FirstStep />} />
+                     <Route path="/second-step" element={<SecondStep />} />
+                  </Routes>
+               </NewHotKeyContext>
             </TemplateKeyBoardContext>
          </ObtainedWindowsContext>
       </>

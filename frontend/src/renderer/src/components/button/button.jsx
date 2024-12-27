@@ -9,6 +9,8 @@ export default function Button({
    fontSize = '1em', //can use any unit and the words: large, ect
    widthPerLetter = '12', //this is px
    animationDuration = null,
+   className = '',
+   animation = true,
 }) {
    const allLetter = children.split('');
    const allLetterDelay = {};
@@ -29,18 +31,22 @@ export default function Button({
    return (
       <button
          onClick={onClick}
-         className={style['button-style']}
+         className={[style['button-style'], className].join(' ')}
          style={
             paddingTopAndBottom
                ? { padding: `${paddingTopAndBottom} 0`, width: `${widthInPx}px` }
-               : { width: `${widthInPx}px` }
+               : animation == true
+                 ? { width: `${widthInPx}px` }
+                 : {}
          }
       >
-         {allLetter.map((letter, index) => (
-            <span key={index} className={css(styles[`delayAnimation${index}`])}>
-               {letter}
-            </span>
-         ))}
+         {animation
+            ? allLetter.map((letter, index) => (
+                 <span key={index} className={css(styles[`delayAnimation${index}`])}>
+                    {letter}
+                 </span>
+              ))
+            : children}
       </button>
    );
 }

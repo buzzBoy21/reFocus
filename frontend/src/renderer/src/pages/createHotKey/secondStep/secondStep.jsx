@@ -8,8 +8,10 @@ import InputText from '../../../components/inputText/inputText';
 import TextArea from '../../../components/textArea/textArea';
 import InputKeyBoard from '../../../components/inputKeyBoard/InputKeyBoard';
 import checkAllInputToCreate from './checkAllInputToCreate';
+import { Link, useNavigate } from 'react-router';
 
-export default function SecondStep({ goToPreviousStep }) {
+export default function SecondStep() {
+   const navigate = useNavigate();
    const [valueContext, updateAttribute, resetContext] = useContext(HotKeyContext);
    const nameInput = useRef();
    const descriptionInput = useRef();
@@ -22,8 +24,8 @@ export default function SecondStep({ goToPreviousStep }) {
             const isOk = await window.api.services.postCreateHotKey(valueContext);
             console.log('fufa', isOk);
             if (isOk) {
-               goToPreviousStep();
                resetContext();
+               navigate('/');
             }
          }
       } catch (error) {
@@ -31,10 +33,8 @@ export default function SecondStep({ goToPreviousStep }) {
       }
    }
    function goToBack() {
-      goToPreviousStep();
       updateAttribute('description', descriptionInput.current.value);
       updateAttribute('nameHotKey', nameInput.current.value);
-      console.log(valueContext);
    }
    console.log('context', valueContext.windowWhereActive);
    return (
@@ -118,9 +118,11 @@ export default function SecondStep({ goToPreviousStep }) {
                   </div>
                </section>
                <footer className={style.buttonsFooter}>
-                  <Button animationDuration={'2s'} onClick={goToBack}>
-                     Previous step
-                  </Button>
+                  <Link to="/">
+                     <Button animationDuration={'2s'} onClick={goToBack}>
+                        Previous step
+                     </Button>
+                  </Link>
                   <Button animationDuration={'2s'} onClick={createHotKey}>
                      Create hot Key
                   </Button>

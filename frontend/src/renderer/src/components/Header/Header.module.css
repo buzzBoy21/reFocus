@@ -1,11 +1,27 @@
 .frame-container {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 4em;
-   max-height: 4em;
+   position: fixed;
+   top: 1em;
+   right: 1em;
+   transition: opacity 1s;
+   & > button {
+      height: auto;
+      width: auto;
+      height: 2.5em;
+      background-color: transparent;
+      border: 0;
+
+      & > img {
+         height: 100%;
+         width: auto;
+      }
+      & > img:hover {
+         cursor: pointer;
+      }
+   }
 }
-.controllers-element {
-   height: 100%;
-   display: flex;
+
+@media (width<500px) {
+   .frame-container {
+      opacity: 0.5;
+   }
 }

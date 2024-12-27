@@ -1,10 +1,20 @@
-import reFocusIcon from '../../assets/reFocus_icon.png';
+import { useContext } from 'react';
 import style from './Header.module.css';
+import hamburgerIMG from './../../assets/icons/hamburger-menu.svg';
+import { Sidebar as SideBarCon } from '../../context/ShowSideBarContext';
+
 export default function Header() {
+   const [showOrCloseSidebar, showingSideBar] = useContext(SideBarCon);
    return (
       <div className={style['frame-container']}>
-         <img src={reFocusIcon} alt="reFocus Icon" height={'100%'} />
-         <div className={style['controllers-element']}></div>
+         <button
+            onClick={() => {
+               showOrCloseSidebar();
+            }}
+         >
+            {' '}
+            <img src={hamburgerIMG} alt="hamburger" />
+         </button>
       </div>
    );
 }

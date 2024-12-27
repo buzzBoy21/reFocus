@@ -1,0 +1,25 @@
+.sidebar {
+   position: fixed;
+   top: 0px;
+   right: 0px;
+   z-index: 1;
+   width: 280px;
+   height: 100vh;
+   background-color: rgba(255, 255, 255, 0.2);
+   backdrop-filter: blur(10px);
+   padding: 24px;
+   box-sizing: border-box;
+   transition: display 1s;
+   border-right: 1px solid rgba(255, 255, 255, 0.3);
+   box-shadow: 2px 0 5px rgba(255, 255, 255, 0.2);
+}
+.headerSideBar {
+   display: flex;
+   justify-content: flex-end;
+}
+.closeSideBar {
+   width: 2em;
+   height: 2em;
+   padding: 0;
+   font-family: 'Marhey';
+}
