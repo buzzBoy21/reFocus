@@ -5,6 +5,8 @@
    text-align: center;
    padding: 1em 0;
    border-radius: 2em;
+   font-family: 'Marhey', sans-serif;
+   font-variation-settings: 'wght' 400;
 }
 .button-style:hover {
    cursor: pointer;

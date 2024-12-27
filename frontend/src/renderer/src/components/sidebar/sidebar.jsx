@@ -33,10 +33,14 @@ function Sidebar() {
          </header>
          <nav>
             <NavLink to={'/all-hot-keys'}>
-               <Button animationDuration={'2s'}>Created hot keys</Button>
+               <Button animationDuration={'2s'} className={style.buttonsOfNav}>
+                  Created hot keys
+               </Button>
             </NavLink>
             <NavLink to={'/settings'}>
-               <Button animationDuration={'1.3s'}>Settings</Button>
+               <Button animationDuration={'1.3s'} className={style.buttonsOfNav}>
+                  Settings
+               </Button>
             </NavLink>
          </nav>
       </div>

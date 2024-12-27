@@ -7,6 +7,7 @@ import generateWindowsStructure from './generateWindowsStructure';
 import PropTypes from 'prop-types';
 import { ObtainedWindows } from '../../context/obtainedWindowsContext';
 import { HotKeyContext } from '../../context/newHotKeyContext';
+import Button from '../button/button';
 export default function SelectWindow({
    defaultPhrase = 'no selected',
    onlySelectOne,
@@ -76,24 +77,33 @@ export default function SelectWindow({
          {showSelectWindow && (
             <div className={style.emergedWindow}>
                <header className={style.actions}>
-                  <button
-                     className={style.button}
+                  <Button
+                     className={[style.smallButtons, style.fontCloseButton].join(' ')}
                      onClick={() => {
                         setShowSelectWindow(false);
                         updateHotKeyContext(storeInKeyName, selectedWindow);
                      }}
+                     animation={false}
                   >
-                     x
-                  </button>
-                  <button
-                     className={style.button}
+                     X
+                  </Button>
+                  <Button
+                     animation={false}
+                     className={style.smallButtons}
                      onClick={() => {
                         fetchGetAllWindowNames();
                      }}
                      title="reload all windows "
                   >
-                     <img src={reloadSVG} alt="reload image" style={{ width: '100%' }} />
-                  </button>
+                     <img
+                        src={reloadSVG}
+                        alt="reload image"
+                        style={{ width: '100%', height: 'auto' }}
+                     />
+                  </Button>
+                  <Button animation={false} className={style.button}>
+                     add personal window name
+                  </Button>
                </header>
                <div className={style.windowToFocus}>
                   {currentAvailableWindows.length === 0 ? (

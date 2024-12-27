@@ -53,7 +53,6 @@
 
    border-radius: 2em;
    & > button {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    }
 }
 .windowToFocus {
@@ -69,21 +68,18 @@
    background-position: center;
    background-size: fill;
 }
-.button {
-   font-family: 'Marhey';
-   font-variation-settings:
-      'wght' 545,
-      'slnt' -5;
 
-   background-color: transparent;
-   border: 0.3em solid #fff;
+.button {
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   padding: 0 1em;
+}
+.smallButtons {
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   padding: 0;
    width: 3em;
-   border-radius: 100%;
-   aspect-ratio: 1/1;
-   &:hover {
-      cursor: pointer;
-      background-color: #ffffff98;
-   }
+}
+.fontCloseButton {
+   font-variation-settings: 'wght' 500;
 }
 
 @media (width<900px) {

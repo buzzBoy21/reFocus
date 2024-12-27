@@ -11,6 +11,8 @@ export default function Button({
    animationDuration = null,
    className = '',
    animation = true,
+   title = '',
+   inlineStyle = {},
 }) {
    let allLetter = null;
    let allLetterDelay = null;
@@ -38,14 +40,15 @@ export default function Button({
 
    return (
       <button
+         title={title}
          onClick={onClick}
          className={[style['button-style'], className].join(' ')}
          style={
             paddingTopAndBottom
-               ? { padding: `${paddingTopAndBottom} 0`, width: `${widthInPx}px` }
+               ? { padding: `${paddingTopAndBottom} 0`, width: `${widthInPx}px`, ...inlineStyle }
                : animation == true
-                 ? { width: `${widthInPx}px` }
-                 : {}
+                 ? { width: `${widthInPx}px`, ...inlineStyle }
+                 : { ...inlineStyle }
          }
       >
          {animation
