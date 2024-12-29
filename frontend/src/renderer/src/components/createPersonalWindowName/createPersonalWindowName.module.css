@@ -1,0 +1,13 @@
+.containerCreatePersonalWindowsName {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 2em;
+   justify-content: center;
+   width: 100%;
+   padding: 0;
+   margin: 1em 0;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   padding: 1em;
+   border-radius: 1em;
+   background-color: rgba(0, 0, 0, 0.025);
+}

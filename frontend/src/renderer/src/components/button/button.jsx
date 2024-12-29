@@ -1,4 +1,4 @@
-import PropTypes, { string } from 'prop-types';
+import PropTypes, { object, string } from 'prop-types';
 import style from './button.module.css';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -63,7 +63,7 @@ export default function Button({
 }
 
 Button.propTypes = {
-   children: PropTypes.string,
+   children: PropTypes.oneOf([string, object]),
    onClick: PropTypes.func,
    padding: PropTypes.string,
 };

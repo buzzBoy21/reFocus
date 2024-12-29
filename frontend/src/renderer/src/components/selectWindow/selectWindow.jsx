@@ -4,10 +4,13 @@ import WindowItem from '../windowItem/windowItem';
 import Loader from '../loader/loader';
 import reloadSVG from '../../assets/reload.svg';
 import generateWindowsStructure from './generateWindowsStructure';
-import PropTypes from 'prop-types';
+import PropTypes, { array } from 'prop-types';
 import { ObtainedWindows } from '../../context/obtainedWindowsContext';
 import { HotKeyContext } from '../../context/newHotKeyContext';
 import Button from '../button/button';
+import CreatePersonalWindowName from '../createPersonalWindowName/createPersonalWindowName';
+import { PersonalWindowsNames } from '../../context/personalWindowsNamesContext';
+
 export default function SelectWindow({
    defaultPhrase = 'no selected',
    onlySelectOne,
@@ -15,8 +18,9 @@ export default function SelectWindow({
 }) {
    const [previousWindowsName, setPreviousWindowsName] = useContext(ObtainedWindows); //to persist the data between pages
    const [hotkeyContext, updateHotKeyContext] = useContext(HotKeyContext);
+   const [personalWindowsNames] = useContext(PersonalWindowsNames);
 
-   const [currentAvailableWindows, setCurrentAvailableWindows] = useState(previousWindowsName);
+   const [currentAvailableWindows, setCurrentAvailableWindows] = useState(previousWindowsName); // {id:string,nameWindow:"string"}
    const [showSelectWindow, setShowSelectWindow] = useState(false);
    const [selectedWindow, setSelectedWindow] = useState(hotkeyContext[storeInKeyName]); //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
    const [idOtherPressedWindow, setIdOtherPressedWindow] = useState(
@@ -32,12 +36,14 @@ export default function SelectWindow({
          const fetchData = async () => {
             //This newWindowsNames contain repeat windows, we only need the news windows
             const newWindowsNames = await window.api.services.getAllWindowNames();
+            const personalWindows = personalWindowsNames.windows.map((element) => element.name);
+
             if (newWindowsNames != undefined) {
                //when fetch is working
                setCurrentAvailableWindows((preValue) => {
                   console.log('prev', preValue);
                   const allWindowsIdsAndWindowsName = generateWindowsStructure(
-                     newWindowsNames,
+                     [...newWindowsNames, ...personalWindows],
                      preValue
                   );
                   setPreviousWindowsName(allWindowsIdsAndWindowsName);
@@ -50,6 +56,7 @@ export default function SelectWindow({
          console.log(error);
       }
    }
+
    //get what will be inside of inputWindow
    if (selectedWindow.length > 0) {
       insideOfInputWindow = (
@@ -74,6 +81,7 @@ export default function SelectWindow({
          >
             {insideOfInputWindow}
          </button>
+         {/* modal */}
          {showSelectWindow && (
             <div className={style.emergedWindow}>
                <header className={style.actions}>
@@ -100,9 +108,6 @@ export default function SelectWindow({
                         alt="reload image"
                         style={{ width: '100%', height: 'auto' }}
                      />
-                  </Button>
-                  <Button animation={false} className={style.button}>
-                     add personal window name
                   </Button>
                </header>
                <div className={style.windowToFocus}>

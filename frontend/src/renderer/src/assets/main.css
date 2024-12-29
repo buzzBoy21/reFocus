@@ -22,7 +22,8 @@ h4 {
       'slnt' -5;
 }
 input,
-label {
+label,
+p {
    font-family: 'Marhey';
    font-variation-settings:
       'wght' 400,

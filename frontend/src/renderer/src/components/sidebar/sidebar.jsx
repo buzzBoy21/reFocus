@@ -37,6 +37,11 @@ function Sidebar() {
                   Created hot keys
                </Button>
             </NavLink>
+            <NavLink to={'/personal-windows-names'}>
+               <Button animationDuration={'2s'} className={style.buttonsOfNav}>
+                  Personal Windows
+               </Button>
+            </NavLink>
             <NavLink to={'/settings'}>
                <Button animationDuration={'1.3s'} className={style.buttonsOfNav}>
                   Settings
