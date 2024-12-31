@@ -63,7 +63,19 @@ export default function Button({
 }
 
 Button.propTypes = {
-   children: PropTypes.oneOf([string, object]),
-   onClick: PropTypes.func,
-   padding: PropTypes.string,
+   children: PropTypes.node.isRequired, // Para cualquier contenido renderizable dentro del botón
+   onClick: PropTypes.func, // Una función para manejar el evento de clic
+   paddingTopAndBottom: PropTypes.oneOfType([
+      PropTypes.string, // '10px', '1em', '10%' etc.
+      PropTypes.number, // También puede ser un número en algunos casos
+   ]),
+   fontSize: PropTypes.string, // '1em', 'large', etc.
+
+   widthPerLetter: PropTypes.string, // Debe ser un número en string ('12')
+   animationDuration: PropTypes.string, // '0.3s', '300ms', etc.
+
+   className: PropTypes.string, // Una clase CSS opcional
+   animation: PropTypes.bool, // Controla si se utiliza animación
+   title: PropTypes.string, // Texto alternativo para accesibilidad
+   inlineStyle: PropTypes.object, // Un objeto con estilos en línea
 };
