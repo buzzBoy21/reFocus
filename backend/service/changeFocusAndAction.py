@@ -6,7 +6,7 @@ from .windowUtils import WindowUtils
 
 
 class ChangeFocusAndAction():
-    def __init__(self,keyToPressWhenFocused:str,nameWindowToFocus:str,nameWindowToBack:str="",windowsWhereExecute:list[str]=[], executeOnTarget=False,modifierKeys=False):
+    def __init__(self,keyToPressWhenFocused:str,nameWindowToFocus:str,nameWindowToBack:str="",windowsWhereExecute:list[str]=[], executeOnTarget=False,modifierKeys=False,flexibleSearch=True):
         """
             Parameters' meaning :
             - keyToPressWhenFocused: Keys to press automatically on the windows which will be focused. -> obligatory
