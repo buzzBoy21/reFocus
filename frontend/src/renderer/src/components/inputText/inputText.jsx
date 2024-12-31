@@ -15,6 +15,7 @@ const InputText = forwardRef(function InputText(
       orientation = 'row',
       defaultValue,
       flexible = false,
+      onBlur = () => {},
    },
    ref
 ) {
@@ -42,6 +43,7 @@ const InputText = forwardRef(function InputText(
                placeholder={placeholder}
                pattern={regx}
                defaultValue={defaultValue}
+               onBlur={onBlur}
             />
          </div>
       </>

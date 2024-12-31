@@ -75,3 +75,9 @@ class StorageOrRecoverHotKey():
         storagedHotKeys.append(newHotKey)
         
         self._jsonHandler.update_json("allStorage",storagedHotKeys)
+    def getAllHoyKeys(self):
+        return self._jsonHandler.read_json()["allStorage"]
+    
+    def rawStorageHotKey(self, hotKeysDict:dict):
+        self._jsonHandler.update_json("allStorage",hotKeysDict)
+

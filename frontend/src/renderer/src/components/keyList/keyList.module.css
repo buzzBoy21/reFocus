@@ -1,0 +1,17 @@
+.keyListContainer {
+   display: flex;
+   gap: 0.25em;
+   flex-wrap: wrap;
+   & > .pressedKeys {
+      background-color: #e0e0e0;
+      font-family: 'Consolas';
+      display: inline-block;
+      padding: 0em 0.3em;
+      font-size: 0.8em;
+      border-radius: 3px;
+      height: fit-content;
+   }
+   & > span {
+      font-size: 0.9em;
+   }
+}

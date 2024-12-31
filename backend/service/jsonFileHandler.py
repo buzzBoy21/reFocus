@@ -25,7 +25,7 @@ class JsonFileHandler:
         with open(self.filepath, 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
 
-    def update_json(self, key, value):
+    def update_json(self, key:str, value:dict|bool|list|str|int|float):
         """Updates a specific key in the JSON file"""
         data = self.read_json()
         data[key] = value

@@ -1,0 +1,53 @@
+.hotKeyContainer {
+   display: flex;
+   flex-direction: column;
+   background-color: hsla(0, 0%, 0%, 0.025);
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   padding: 1em;
+   border-radius: 1em;
+   gap: 0.5em;
+   height: 100%;
+   & p {
+      margin: 0;
+   }
+   /* hot key noun */
+   & > p:first-child {
+      border-bottom: 0.15rem black solid;
+      margin-bottom: 0.5em;
+   }
+   /* hotKey description */
+   & > p:nth-child(2) {
+      font-size: 0.8em;
+      flex-grow: 2;
+      margin-bottom: 2em;
+   }
+   & > .keys {
+      display: flex;
+   }
+   /* window to focus */
+   & > img {
+      width: fit-content;
+      height: 2em;
+      object-fit: contain;
+
+      &:hover {
+         cursor: help;
+      }
+   }
+}
+.hotKeyContainer:hover {
+   cursor: pointer;
+}
+.eraseButton {
+   padding: 1em;
+   background-color: #ff4d4d;
+   color: white;
+   border: 0;
+   border-radius: 0.7em;
+   font-family: 'Marhey';
+   width: 100%;
+   margin-top: 2em;
+}
+.eraseButton:hover {
+   cursor: pointer;
+}

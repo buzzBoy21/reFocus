@@ -10,6 +10,7 @@ import ShowSideBarContext from './context/ShowSideBarContext';
 import { HashRouter, Route, Routes } from 'react-router';
 import PersonalWindowsNamesContext from './context/personalWindowsNamesContext';
 import PersonalWindows from './pages/personalWindows/PersonalWindows';
+import CreatedHotKey from './pages/createdHotKey/createdHotKey';
 const App = memo(function App() {
    return (
       <>
@@ -25,6 +26,7 @@ const App = memo(function App() {
                         <Route path="/" element={<FirstStep />} />
                         <Route path="/second-step" element={<SecondStep />} />
                         <Route path="/personal-windows-names" element={<PersonalWindows />} />
+                        <Route path="/created-hot-keys" element={<CreatedHotKey />} />
                      </Routes>
                   </NewHotKeyContext>
                </TemplateKeyBoardContext>

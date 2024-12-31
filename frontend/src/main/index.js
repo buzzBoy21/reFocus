@@ -6,6 +6,9 @@ import readFile from './../fileOutInput/readFile';
 import writeFile from '../fileOutInput/writeFile';
 import getAllWindowNames from '../services/getAllWindowNames';
 import postCreateHotKey from '../services/createHotKey';
+import getAllHotKeys from '../services/getAllHotKeys';
+import deleteHotKey from '../services/deleteHotKey';
+
 function createWindow() {
    // Create the browser window.
    const mainWindow = new BrowserWindow({
@@ -101,6 +104,22 @@ app.whenReady().then(() => {
       }
    });
 
+   ipcMain.handle('get-hot-keys', async (event) => {
+      try {
+         return await getAllHotKeys();
+      } catch (error) {
+         console.error('Error fetching window names:', error);
+         throw error;
+      }
+   });
+   ipcMain.handle('delete-hot-key', async (event, hotKeyJSON) => {
+      try {
+         return await deleteHotKey(hotKeyJSON);
+      } catch (error) {
+         console.error('Error fetching window names:', error);
+         throw error;
+      }
+   });
    createWindow();
 
    app.on('activate', function () {

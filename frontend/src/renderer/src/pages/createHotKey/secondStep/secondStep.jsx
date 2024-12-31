@@ -17,8 +17,6 @@ export default function SecondStep() {
    const descriptionInput = useRef();
 
    async function createHotKey() {
-      updateAttribute('description', descriptionInput.current.value);
-      updateAttribute('nameHotKey', nameInput.current.value);
       try {
          if (checkAllInputToCreate(valueContext)) {
             const isOk = await window.api.services.postCreateHotKey(valueContext);
@@ -32,11 +30,7 @@ export default function SecondStep() {
          console.log(error.message);
       }
    }
-   function goToBack() {
-      updateAttribute('description', descriptionInput.current.value);
-      updateAttribute('nameHotKey', nameInput.current.value);
-   }
-   console.log('context', valueContext.windowWhereActive);
+
    return (
       <>
          <div className={style.page}>
@@ -46,11 +40,17 @@ export default function SecondStep() {
                      labelText="Name of HoyKey"
                      ref={nameInput}
                      defaultValue={valueContext.nameHotKey}
+                     onBlur={() => {
+                        updateAttribute('nameHotKey', nameInput.current.value);
+                     }}
                   />
                   <TextArea
                      labelText="Description hotkey"
                      defaultValue={valueContext.description}
                      ref={descriptionInput}
+                     onBlur={() => {
+                        updateAttribute('description', descriptionInput.current.value);
+                     }}
                   ></TextArea>
                </section>
                <section>
@@ -119,9 +119,7 @@ export default function SecondStep() {
                </section>
                <footer className={style.buttonsFooter}>
                   <Link to="/">
-                     <Button animationDuration={'2s'} onClick={goToBack}>
-                        Previous step
-                     </Button>
+                     <Button animationDuration={'2s'}>Previous step</Button>
                   </Link>
                   <Button animationDuration={'2s'} onClick={createHotKey}>
                      Create hot Key

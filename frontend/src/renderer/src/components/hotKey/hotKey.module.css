@@ -1,0 +1,79 @@
+.hotKeyContainer {
+   top: 0px;
+   z-index: 100;
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   background-color: hsla(0, 0%, 0%, 0.025);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   backdrop-filter: blur(20px);
+
+   padding: 1em;
+   border-radius: 1em;
+   gap: 0.7em;
+   max-width: 100%;
+   & p {
+      margin: 0;
+   }
+
+   /* hot key noun */
+   & > p:first-child {
+      border-bottom: 0.15rem black solid;
+      margin-bottom: 0.5em;
+   }
+
+   /* hotKey description */
+   & > p:nth-child(2) {
+      font-size: 0.8em;
+      flex-grow: 2;
+      margin-bottom: 2em;
+   }
+   & > .keys {
+      display: flex;
+   }
+
+   /* window to focus */
+   & > p:nth-child(4) {
+      margin-top: 1em !important;
+      & + img {
+         width: fit-content;
+         height: 2em;
+         object-fit: contain;
+
+         &:hover {
+            cursor: help;
+         }
+      }
+   }
+
+   /* window to back */
+   & > p:nth-child(6) {
+      & + img {
+         width: fit-content;
+         height: 2em;
+         object-fit: contain;
+
+         &:hover {
+            cursor: help;
+         }
+      }
+   }
+}
+/* window to focus */
+
+.hotKeyContainer:hover {
+   cursor: pointer;
+}
+.eraseButton {
+   padding: 1em;
+   background-color: #ff4d4d;
+   color: white;
+   border: 0;
+   border-radius: 0.7em;
+   font-family: 'Marhey';
+   width: 100%;
+   margin-top: 2em;
+}
+.eraseButton:hover {
+   cursor: pointer;
+}

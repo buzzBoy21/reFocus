@@ -65,12 +65,11 @@ class ChangeFocusAndAction():
                                
                 keyboard.send("ctrl",do_release=True, do_press=False)
                 keyboard.send("alt",do_release=True, do_press=False)
-                keyboard.press(self.keyToPressWhenFocused)
+                keyboard.send(self.keyToPressWhenFocused,do_press=True,do_release=True)
 
             else:
-                keyboard.press(self.keyToPressWhenFocused)
-                 
-            
+                keyboard.send(self.keyToPressWhenFocused,do_press=True,do_release=True)
+
             if self.nameWindowToBack != "":
                 app = Application().connect(title=self.nameWindowToBack)
                 window2 = app.window(title=self.nameWindowToBack)

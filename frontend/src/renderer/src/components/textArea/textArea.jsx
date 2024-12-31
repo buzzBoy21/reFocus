@@ -2,7 +2,7 @@ import { forwardRef, useState } from 'react';
 import style from './textArea.module.css';
 import PropTypes from 'prop-types';
 const TextArea = forwardRef(function TextArea(
-   { labelText, maxLength = 200, placeHolder = '', defaultValue },
+   { labelText, maxLength = 100, placeHolder = '', defaultValue, onBlur = () => {} },
    ref
 ) {
    const [valueTextArea, setValueTextArea] = useState(defaultValue ?? '');
@@ -28,6 +28,7 @@ const TextArea = forwardRef(function TextArea(
                   setRemainingWord(maxLength - parseInt(e.target.value.length));
                }}
                defaultValue={valueTextArea}
+               onBlur={onBlur}
             ></textarea>
          </div>
       </>

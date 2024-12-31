@@ -7,16 +7,14 @@ import HomeImg from './../../assets/icons/home.svg';
 
 function Sidebar() {
    const [showOrCloseSidebar, showingSideBar] = useContext(SideBarCon);
-   useEffect(() => {
-      console.log('hola');
-   }, [showingSideBar]);
+
    return (
       <div
          style={showingSideBar ? { display: 'block' } : { display: 'none' }}
          className={style.sidebar}
       >
          <header className={style.headerSideBar}>
-            <Link to={'/'}>
+            <Link to={'/'} onClick={showOrCloseSidebar}>
                <Button className={style.closeSideBar} animation={false}>
                   <img src={HomeImg} alt="home image" style={{ width: '80%', height: 'auto' }} />
                </Button>
@@ -32,17 +30,17 @@ function Sidebar() {
             </Button>
          </header>
          <nav>
-            <NavLink to={'/all-hot-keys'}>
+            <NavLink to={'/created-hot-keys'} onClick={showOrCloseSidebar}>
                <Button animationDuration={'2s'} className={style.buttonsOfNav}>
                   Created hot keys
                </Button>
             </NavLink>
-            <NavLink to={'/personal-windows-names'}>
+            <NavLink to={'/personal-windows-names'} onClick={showOrCloseSidebar}>
                <Button animationDuration={'2s'} className={style.buttonsOfNav}>
                   Personal Windows
                </Button>
             </NavLink>
-            <NavLink to={'/settings'}>
+            <NavLink to={'/settings'} onClick={showOrCloseSidebar}>
                <Button animationDuration={'1.3s'} className={style.buttonsOfNav}>
                   Settings
                </Button>

@@ -41,7 +41,7 @@ def createaHotKeyController(parameterRequest:RequestInfo):
                                 hot_key_name,
                                 hot_key_description)
         handlerStorageNewHotKey=StorageOrRecoverHotKey(generalSettings["dbFile"])
-        handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey,modifierKeys)
+        handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey,flexible_search)
         return json.dumps({"response":True})
     else:
         return json.dumps({"response":False})
