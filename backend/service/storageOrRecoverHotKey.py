@@ -29,17 +29,17 @@ class StorageOrRecoverHotKey():
             execute_on_target = storagedHotKey.get("execute_on_target", False)
             flexible_search = storagedHotKey.get("flexible_search", False)
 
-            existWindowsToFocus= WindowUtils.WindowExist(window_name_to_focus,flexible_search)
 
             #detect if key_to_active_fuction have alt or ctrl
             modifierKeys = "ctrl" in key_to_active_fuction or "alt" in key_to_active_fuction
 
             fuctionToExecute=ChangeFocusAndAction(key_to_press_when_focus,
-                                                    existWindowsToFocus,
+                                                    window_name_to_focus,
                                                     window_name_to_back,
                                                     windows_where_execute,
                                                     execute_on_target,
-                                                    modifierKeys)
+                                                    modifierKeys,
+                                                    flexible_search)
             HotKey.createAndAddToHotKeyList(key_to_active_fuction,
                                     fuctionToExecute.executeReFocus,
                                     hot_key_name,

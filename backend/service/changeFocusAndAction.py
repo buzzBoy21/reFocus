@@ -15,6 +15,7 @@ class ChangeFocusAndAction():
             - windowsWhereExecute: windows where is allowed execute reFocus -> optional : DefaultValue:without names
             - executeOnTarget: If you want that refocus execute on the traget focus -> optional: DefaultValue:False
             - modifierKeys: If you will use a hotKey which active by modifierKeys (ctrl, alt): read why in _changeFocusAndAction function
+            - flexibleSearch: Let you focus on the windows that contain the nameWIndowToFocus for exmaple nameWindowToFoc = "net" and we have a window which is "netflix | La casa de papel"
         """
         self.keyToPressWhenFocused = keyToPressWhenFocused
         self.nameWindowToFocus = nameWindowToFocus
@@ -22,6 +23,7 @@ class ChangeFocusAndAction():
         self.windowsWhereExecute:list[str]=windowsWhereExecute
         self.executeOnTarget=executeOnTarget  
         self.modifierKeys=modifierKeys
+        self.flexibleSearch=flexibleSearch
     def executeReFocus(self):
         """
             Contains the condition that allows or denies the execution of the reFocus action.
@@ -49,8 +51,16 @@ class ChangeFocusAndAction():
             Principal action of refocus, change windows, execute the key, and back to other window
         """
         try:
-            app = Application().connect(title=self.nameWindowToFocus)
-            window = app.window(title=self.nameWindowToFocus)
+            windowToFocus=""
+            if self.flexibleSearch:
+                windowToFocus= WindowUtils.WindowExist(self.nameWindowToFocus,self.flexibleSearch)
+
+            else:
+                windowToFocus=self.nameWindowToFocus
+
+
+            app = Application().connect(title=windowToFocus)
+            window = app.window(title=windowToFocus)
             window.set_focus()
 
             #Why this? -> read under
