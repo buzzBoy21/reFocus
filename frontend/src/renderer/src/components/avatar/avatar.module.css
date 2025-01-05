@@ -4,6 +4,11 @@
    z-index: 10;
    height: 5rem;
    box-sizing: border-box;
+   user-select: none;
+   pointer-events: none;
+   & > img {
+      user-select: none;
+   }
 }
 .bottomLeft {
    bottom: 5em;

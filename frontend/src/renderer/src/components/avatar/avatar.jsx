@@ -8,10 +8,9 @@ function Avatar({ errorPhrase, normalMessage }) {
    const [emotion, setEmotion] = useState(momiAvatar);
 
    useEffect(() => {
-      setEmotion(sadMomiAvatar);
-      if (errorPhrase == '') {
+      if (errorPhrase !== '') {
          //The avatar is normal because there is no error.
-         setEmotion(momiAvatar);
+         setEmotion(sadMomiAvatar);
       }
    }, [errorPhrase]);
 
@@ -19,7 +18,13 @@ function Avatar({ errorPhrase, normalMessage }) {
       <>
          <div className={style.containerAvatar + ' ' + style.bottomLeft}>
             <img src={emotion} alt="momi image" height={'100%'} width={'auto'} />
-            <SpeechBubble errorMessage={errorPhrase} normalMessage={normalMessage} />
+            <SpeechBubble
+               errorMessage={errorPhrase}
+               normalMessage={normalMessage}
+               executeWhenHide={() => {
+                  setEmotion(momiAvatar);
+               }}
+            />
          </div>
       </>
    );

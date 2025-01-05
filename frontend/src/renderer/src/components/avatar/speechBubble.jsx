@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import style from './speechBubble.module.css';
 import { HandleMessageContext } from '../handleMessage/handleMessage';
 
-function SpeechBubble({ errorMessage, normalMessage }) {
-   const [messageVisible, setMessageVisible] = useState(true);
+function SpeechBubble({ errorMessage, normalMessage, executeWhenHide = () => {} }) {
+   const [messageVisible, setMessageVisible] = useState(false);
    const [message, setMessage] = useState({ errorPhrase: '', message: '' }); // To show the last phrase when the speech bubble is going down:
 
    const timeOuts = useRef([]); // store all timeOut will be generated
@@ -28,6 +28,7 @@ function SpeechBubble({ errorMessage, normalMessage }) {
          hideText.then(() => {
             timeOuts.current = [];
             //if the promise is completed, all timeOut will be erased.
+            executeWhenHide();
          });
       }
       console.log(timeOuts.current);
@@ -49,8 +50,8 @@ function SpeechBubble({ errorMessage, normalMessage }) {
    return (
       <div className={`${style.bubbleContainer} ${messageVisible ? style.visible : ''}`}>
          <div className={style.bubble}>
-            <p className={style.text}>{message.message}</p>
-            <p className={style.error + ' ' + style.shakingText}>{message.errorPhrase}</p>
+            <p>{message.message}</p>
+            <p className={style.shakingText}>{message.errorPhrase}</p>
          </div>
       </div>
    );
