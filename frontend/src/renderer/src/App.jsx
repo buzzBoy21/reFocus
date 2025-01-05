@@ -11,9 +11,10 @@ import { HashRouter, Route, Routes } from 'react-router';
 import PersonalWindowsNamesContext from './context/personalWindowsNamesContext';
 import PersonalWindows from './pages/personalWindows/PersonalWindows';
 import CreatedHotKey from './pages/createdHotKey/createdHotKey';
+import HandleMessage from './components/handleMessage/handleMessage';
 const App = memo(function App() {
    return (
-      <>
+      <HandleMessage>
          <PersonalWindowsNamesContext>
             <ObtainedWindowsContext>
                <TemplateKeyBoardContext>
@@ -32,7 +33,7 @@ const App = memo(function App() {
                </TemplateKeyBoardContext>
             </ObtainedWindowsContext>
          </PersonalWindowsNamesContext>
-      </>
+      </HandleMessage>
    );
 });
 

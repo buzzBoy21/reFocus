@@ -59,8 +59,17 @@ class HotKey:
 
         Return the hot key has been created
         """
+        print("dentro1")
+        print(keysToPress)
+        print(fuction)
+        print(nameHotKey)
+        print(descriptionHotKey)
         newHotKey=HotKey(keysToPress,fuction,nameHotKey,descriptionHotKey)
+        print("dentro2")
+
         HotKey.addToHotKeyList(newHotKey)
+        print("dentro3")
+
         return newHotKey
     def beginAllListenerKeyboard(self):
         keyboard.wait(suppress=True)

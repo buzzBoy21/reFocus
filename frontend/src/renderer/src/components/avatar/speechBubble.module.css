@@ -1,0 +1,60 @@
+.bubbleContainer {
+   position: relative;
+   margin-left: 2em;
+   opacity: 0;
+   transform: translateY(20px);
+   transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+}
+
+.bubbleContainer.visible {
+   opacity: 1;
+   transform: translateY(-1em);
+}
+
+.bubble {
+   display: block;
+   background-color: white;
+   border-radius: 2em;
+   max-width: 20em;
+   height: fit-content;
+   padding: 1rem;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   position: relative;
+}
+
+.bubble::before {
+   content: '';
+   position: absolute;
+   left: -1em;
+   top: 50%;
+   transform: translateY(-50%);
+   border-top: 20px solid transparent;
+   border-bottom: 20px solid transparent;
+   border-right: 20px solid white;
+}
+
+.shakingText {
+   animation: shake 0.5s infinite; /* Duración de 0.5s, repite infinitamente */
+}
+@keyframes shake {
+   0% {
+      transform: translate(0, 0);
+   }
+   20% {
+      transform: translate(-1px, 1px);
+   }
+   40% {
+      transform: translate(1px, 1px);
+   }
+   60% {
+      transform: translate(-1px, -1px);
+   }
+   80% {
+      transform: translate(1px, 1px);
+   }
+   100% {
+      transform: translate(0, 0);
+   }
+}

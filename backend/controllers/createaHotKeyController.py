@@ -23,26 +23,30 @@ def createaHotKeyController(parameterRequest:RequestInfo):
     execute_on_target = paramBody.get("execute_on_target",False)
     flexible_search=paramBody.get("flexible_search",False)
 
+    try:
+        #detect if key_to_active_fuction have alt or ctrl
+        modifierKeys = "ctrl" in key_to_active_fuction or "alt" in key_to_active_fuction
+        
+        fuctionToExecute=ChangeFocusAndAction(key_to_press_when_focus,
+                                                window_name_to_focus,
+                                                window_name_to_back,
+                                                windows_where_execute,
+                                                execute_on_target,
+                                                modifierKeys,
+                                                flexible_search)
+        
+        newHotKey=HotKey.createAndAddToHotKeyList(key_to_active_fuction,
+                                fuctionToExecute.executeReFocus,
+                                hot_key_name,
+                                hot_key_description)
+        
+        handlerStorageNewHotKey=StorageOrRecoverHotKey(generalSettings["dbFile"])
 
-    #detect if key_to_active_fuction have alt or ctrl
-    modifierKeys = "ctrl" in key_to_active_fuction or "alt" in key_to_active_fuction
+        handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey,flexible_search)
 
-
-    fuctionToExecute=ChangeFocusAndAction(key_to_press_when_focus,
-                                            window_name_to_focus,
-                                            window_name_to_back,
-                                            windows_where_execute,
-                                            execute_on_target,
-                                            modifierKeys,
-                                            flexible_search)
-    print("ejecuta")
-    newHotKey=HotKey.createAndAddToHotKeyList(key_to_active_fuction,
-                            fuctionToExecute.executeReFocus,
-                            hot_key_name,
-                            hot_key_description)
-    handlerStorageNewHotKey=StorageOrRecoverHotKey(generalSettings["dbFile"])
-    handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey,flexible_search)
-    return json.dumps({"response":True})
-  
+        return json.dumps({"response":True})
+    except Exception as genericException:
+        return json.dumps({"response":False})
+        pass
 
     

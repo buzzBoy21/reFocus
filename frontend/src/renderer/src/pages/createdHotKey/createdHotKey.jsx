@@ -1,16 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import style from './createdHotKey.module.css';
 import HotKey from '../../components/hotKey/hotKey';
+import { HandleMessageContext } from '../../components/handleMessage/handleMessage';
 
 function CreatedHotKey() {
+   const [, writeError] = useContext(HandleMessageContext);
    const [allHotKeys, setAllHotKeys] = useState([]);
    useEffect(() => {
       async function fetchHotKeys() {
          const result = await window.api.services.getAllHotKeys();
+         console.log(result);
          if (result == undefined) {
-            throw new Error('The server is not initialized');
+            writeError(new Error('The server is not initialized 😢😢'));
+         } else {
+            setAllHotKeys(result);
          }
-         setAllHotKeys(result);
       }
       fetchHotKeys();
    }, []);

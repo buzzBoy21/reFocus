@@ -17,17 +17,14 @@ export default function SecondStep() {
    const descriptionInput = useRef();
 
    async function createHotKey() {
-      try {
-         if (checkAllInputToCreate(valueContext)) {
-            const isOk = await window.api.services.postCreateHotKey(valueContext);
-            console.log('fufa', isOk);
-            if (isOk) {
-               resetContext();
-               navigate('/');
-            }
+      if (checkAllInputToCreate(valueContext)) {
+         const isOk = await window.api.services.postCreateHotKey(valueContext);
+
+         console.log('fufa', isOk);
+         if (isOk && !(isOk instanceof Error)) {
+            resetContext();
+            navigate('/');
          }
-      } catch (error) {
-         console.log(error.message);
       }
    }
 

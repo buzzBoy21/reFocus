@@ -4,13 +4,11 @@
  * @returns {Promise<bool>} return true is post was successful and false in case of fail
  */
 export default function postCreateHotKey(bodyData) {
-   console.log('bodyData', bodyData);
-   console.log('bodyData', bodyData.windowToFocus[0].nameWindow);
    return fetch('http://localhost:8080/create-hot-key', {
       method: 'POST',
 
       headers: {
-         'Content-Type': 'application/json, charset=UTF-8',
+         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
          key_to_active_auto_hot_keys: bodyData.hotKey,
@@ -27,16 +25,20 @@ export default function postCreateHotKey(bodyData) {
       }),
    })
       .then((response) => {
+         console.log(response.ok);
          if (response.ok) {
             return response.json();
-         } else {
-            return new Error(`Error: ${response.status}`);
          }
       })
       .then((responseParse) => {
+         if (responseParse.response === false) {
+            throw new Error('Check if you are selecting unsupported keys: example window: key.');
+         }
          return responseParse.response;
       })
       .catch((error) => {
-         console.log(error);
+         if (error instanceof TypeError && error.message === 'fetch failed') {
+            return new Error(`The server is off. You can turn it on from the sidebar.`);
+         }
       });
 }

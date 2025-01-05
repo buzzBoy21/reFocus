@@ -15,4 +15,7 @@ h1 {
    grid-template-columns: repeat(auto-fit, minmax(10em, 15rem));
    justify-content: center;
    gap: 2em;
+   & > P:nth-child(1) {
+      text-align: center;
+   }
 }

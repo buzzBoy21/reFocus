@@ -16,11 +16,13 @@ function MinimalHotKey({
       <>
          <div className={style.hotKeyContainer} onClick={onClick}>
             <p>{hotKeyName}</p>
-            <p>
-               {hotKeyDescription.length > 60
-                  ? hotKeyDescription.slice(0, 60) + '...'
-                  : hotKeyDescription}
-            </p>
+            {hotKeyDescription === '' ? null : (
+               <p>
+                  {hotKeyDescription.length > 60
+                     ? hotKeyDescription.slice(0, 60) + '...'
+                     : hotKeyDescription}
+               </p>
+            )}
             <div className={style.keys}>
                <p>key value: </p>
                <KeyList stringKeys={keyToActiveHotKey}></KeyList>

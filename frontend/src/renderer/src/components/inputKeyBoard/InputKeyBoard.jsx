@@ -1,4 +1,4 @@
-import { forwardRef, useContext, useState } from 'react';
+import React, { forwardRef, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './InputKeyBoard.module.css';
 import KeyBoard from '../Keyboard/KeyBoard';
@@ -25,12 +25,12 @@ const InputKeyBoard = forwardRef(function InputKeyBoard({ label = '', keyContext
             >
                {KeyPressed.map((keyValue, index) =>
                   ++index === KeyPressed.length && KeyPressed.length > 0 ? (
-                     keyValue
+                     <span key={index}>{keyValue}</span>
                   ) : (
-                     <>
-                        {keyValue}
-                        <span> + </span>
-                     </>
+                     <React.Fragment key={index}>
+                        <span>{keyValue}</span>
+                        <span className={style.plus}> + </span>
+                     </React.Fragment>
                   )
                )}
             </div>

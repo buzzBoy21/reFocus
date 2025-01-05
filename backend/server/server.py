@@ -5,7 +5,7 @@ from exceptions.serverExceptions import OneOrZeroAtributtes
 from server.routes import GETroutes,POSTroutes
 
 from server.requestInfo import RequestInfo
-
+import traceback
 
 class HandleServer(BaseHTTPRequestHandler):  
     getRoutes = GETroutes
@@ -144,6 +144,14 @@ class HandleServer(BaseHTTPRequestHandler):
             print(f"Error:\n{endointDontExist.__doc__}")
             self._wrongResponse(f"Error in Server.py: Probably the endpoint you wrote is wrong or you wrote wrong the http method\n{endointDontExist}",400)
         except Exception  as genericException:
-            print(f"Error:\n{genericException}")
-            self._wrongResponse(f"Error type<Exception> in Server.py:\n{genericException}",400)
+            error_details = traceback.format_exc()
+            print(f"Generic Error:\n{genericException}")
+            print(f"Type Error:\n{type(genericException) }")
+            print(f"Error Details:\n{error_details}")
+
+            # Enviar un mensaje de error detallado
+            self._wrongResponse(
+                f"Error type<Exception> in Server.py:\n{genericException}\nDetails:\n{error_details}",
+                400,
+            )
             pass

@@ -17,7 +17,7 @@
    cursor: pointer;
    min-height: 2.41359375em;
    min-width: 20dvw;
-   & > span {
+   & > .plus {
       font-variation-settings:
          'wght' 200,
          'slnt' 0;
