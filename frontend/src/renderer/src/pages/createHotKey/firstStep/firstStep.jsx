@@ -5,7 +5,11 @@ import style from './firstStep.module.css';
 import PropTypes from 'prop-types';
 import { HotKeyContext } from '../../../context/newHotKeyContext';
 import { useNavigate } from 'react-router';
+import { HandleMessageContext } from '../../../components/handleMessage/handleMessage';
+
 export default function FirstStep() {
+   const [writeMessage] = useContext(HandleMessageContext);
+
    const navigate = useNavigate();
 
    const [valueContext, updateContext] = useContext(HotKeyContext);
@@ -22,7 +26,7 @@ export default function FirstStep() {
          navigate('/second-step');
       } else {
          //this will be said by Mibo (key avatar)
-         console.log('press at least one key !!! 😓😓');
+         writeMessage('press at least one key !!! 😓😓');
       }
    }
 

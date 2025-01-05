@@ -11,17 +11,12 @@ function HandleMessage({ children }) {
    const writeErrorMessage = (error) => {
       setMessage((prev) => ({ ...prev, errorMessage: error.message }));
    };
-
-   useEffect(() => {
-      setTimeout(() => {
-         if (message.errorMessage != '' || message.message != '') {
-            setMessage({ errorMessage: '', message: '' });
-         }
-      }, 4000);
-   }, [message]);
+   const reset = () => {
+      setMessage({ message: '', errorMessage: '' });
+   };
 
    return (
-      <HandleMessageContext.Provider value={[writeMessage, writeErrorMessage, message]}>
+      <HandleMessageContext.Provider value={[writeMessage, writeErrorMessage, message, reset]}>
          <Avatar errorPhrase={message.errorMessage ?? ''} normalMessage={message.message}></Avatar>
          {children}
       </HandleMessageContext.Provider>
