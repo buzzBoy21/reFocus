@@ -49,20 +49,7 @@ function HotKey({
    return (
       <>
          <div ref={hueContainer} style={{ position: 'relative', height: height }}>
-            {!showAllInfo && (
-               <MinimalHotKey
-                  onClick={() => {
-                     setShowAllInfo((prev) => !prev);
-                  }}
-                  hotKeyName={hotKeyName}
-                  hotKeyDescription={hotKeyDescription}
-                  keyToActiveHotKey={keyToActiveHotKey}
-                  hotKeyJSONfromServer={hotKeyJSONfromServer}
-                  imageWindowNameToFocus={allImage.windowToFocus}
-                  titleImageWindowNameToFocus={windowNameToFocus}
-               />
-            )}
-            {showAllInfo && (
+            {showAllInfo ? (
                <div
                   className={style.hotKeyContainer}
                   onClick={() => {
@@ -83,14 +70,14 @@ function HotKey({
                      <KeyList stringKeys={keyToActiveHotKey}></KeyList>
                   </div>
 
-                  <p>window to focus</p>
+                  <p className={style.windowToFocus}>window to focus</p>
                   <img
                      src={allImage.windowToFocus ?? notFoundImg}
                      alt=""
                      title={windowNameToFocus}
                   />
 
-                  <p>window to back</p>
+                  <p className={style.windowToBack}>window to back</p>
                   {windowNameToBack ? (
                      <img
                         src={allImage.windowNameToBack ?? notFoundImg}
@@ -98,7 +85,7 @@ function HotKey({
                         title={windowNameToFocus}
                      />
                   ) : (
-                     'no one'
+                     <p>any one</p>
                   )}
 
                   <button
@@ -110,6 +97,18 @@ function HotKey({
                      Delete
                   </button>
                </div>
+            ) : (
+               <MinimalHotKey
+                  onClick={() => {
+                     setShowAllInfo((prev) => !prev);
+                  }}
+                  hotKeyName={hotKeyName}
+                  hotKeyDescription={hotKeyDescription}
+                  keyToActiveHotKey={keyToActiveHotKey}
+                  hotKeyJSONfromServer={hotKeyJSONfromServer}
+                  imageWindowNameToFocus={allImage.windowToFocus}
+                  titleImageWindowNameToFocus={windowNameToFocus}
+               />
             )}
          </div>
       </>

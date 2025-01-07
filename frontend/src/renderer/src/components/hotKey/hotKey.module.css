@@ -33,7 +33,7 @@
    }
 
    /* window to focus */
-   & > p:nth-child(4) {
+   & > .windowToFocus {
       margin-top: 1em !important;
       & + img {
          width: fit-content;
@@ -47,7 +47,7 @@
    }
 
    /* window to back */
-   & > p:nth-child(6) {
+   & > .windowToBack {
       & + img {
          width: fit-content;
          height: 2em;
@@ -56,6 +56,9 @@
          &:hover {
             cursor: help;
          }
+      }
+      & + p {
+         font-size: 0.8em;
       }
    }
 }
