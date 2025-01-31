@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState, useEffect } from 'react';
 import style from './selectWindow.module.css';
 import WindowItem from '../windowItem/windowItem';
 import Loader from '../loader/loader';
@@ -15,6 +15,7 @@ export default function SelectWindow({
    defaultPhrase = 'no selected',
    onlySelectOne,
    storeInKeyName, //used to obtain the default value, and storage in hotkey context
+   showPersonalWindows = true,
 }) {
    const [previousWindowsName, setPreviousWindowsName] = useContext(ObtainedWindows); //to persist the data between pages
    const [hotkeyContext, updateHotKeyContext] = useContext(HotKeyContext);
@@ -32,8 +33,8 @@ export default function SelectWindow({
    let insideOfInputWindow = null;
 
    function fetchGetAllWindowNames() {
-      try {
-         const fetchData = async () => {
+      const fetchData = async () => {
+         try {
             //This newWindowsNames contain repeat windows, we only need the news windows
             const newWindowsNames = await window.api.services.getAllWindowNames();
             const personalWindows = personalWindowsNames.windows.map((element) => element.name);
@@ -41,22 +42,25 @@ export default function SelectWindow({
             if (newWindowsNames != undefined) {
                //when fetch is working
                setCurrentAvailableWindows((preValue) => {
-                  console.log('prev', preValue);
+                  console.log('windowsAvailable', preValue);
+                  const personalWindowOrEmpty = showPersonalWindows ? personalWindows : [];
                   const allWindowsIdsAndWindowsName = generateWindowsStructure(
-                     [...newWindowsNames, ...personalWindows],
+                     [...newWindowsNames, ...personalWindowOrEmpty],
                      preValue
                   );
-                  setPreviousWindowsName(allWindowsIdsAndWindowsName);
+                  console.log('aaaaaaaaaaaaaaaaaaaaaaaaa', allWindowsIdsAndWindowsName);
                   return allWindowsIdsAndWindowsName;
                });
             }
-         };
-         fetchData();
-      } catch (error) {
-         console.log(error);
-      }
+         } catch (error) {
+            console.log(error);
+         }
+      };
+      fetchData();
    }
-
+   useEffect(() => {
+      setPreviousWindowsName(currentAvailableWindows);
+   }, [currentAvailableWindows]);
    //get what will be inside of inputWindow
    if (selectedWindow.length > 0) {
       insideOfInputWindow = (
@@ -90,6 +94,7 @@ export default function SelectWindow({
                      onClick={() => {
                         setShowSelectWindow(false);
                         updateHotKeyContext(storeInKeyName, selectedWindow);
+                        console.log('stored', selectedWindow);
                      }}
                      animation={false}
                   >

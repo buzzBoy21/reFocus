@@ -14,6 +14,7 @@ function HotKey({
    hotKeyJSONfromServer,
    windowNameToFocus,
    windowNameToBack,
+   windowWhereExecute,
 }) {
    const [showAllInfo, setShowAllInfo] = useState(false);
    const [height, setHeight] = useState(null);
@@ -35,7 +36,7 @@ function HotKey({
          result.windowToFocus = (await findAndImportProgramImg(windowNameToFocus)).default;
 
          if (windowNameToBack === '') {
-            result.windowToBack = '';
+            result.windowToBack = false;
          } else {
             result.windowToBack = (await findAndImportProgramImg(windowNameToBack)).default;
          }
@@ -80,12 +81,29 @@ function HotKey({
                   <p className={style.windowToBack}>window to back</p>
                   {windowNameToBack ? (
                      <img
-                        src={allImage.windowNameToBack ?? notFoundImg}
+                        src={allImage.windowToBack ?? notFoundImg}
                         alt=""
-                        title={windowNameToFocus}
+                        title={windowNameToBack}
                      />
                   ) : (
                      <p>any one</p>
+                  )}
+                  <p className={style.windowWhereExecute}>window where execute</p>
+                  {windowWhereExecute.length !== 0 ? (
+                     <div>
+                        {windowWhereExecute.map((windowName, index) => {
+                           return (
+                              <img
+                                 key={index}
+                                 src={allImage.windowWhereExecute ?? notFoundImg}
+                                 alt=""
+                                 title={windowName}
+                              />
+                           );
+                        })}
+                     </div>
+                  ) : (
+                     <p>all windows</p>
                   )}
 
                   <button
@@ -118,6 +136,9 @@ HotKey.propTypes = {
    hotKeyName: PropTypes.string.isRequired,
    hotKeyDescription: PropTypes.string.isRequired,
    keyToActiveHotKey: PropTypes.string.isRequired,
+   windowNameToBack: PropTypes.string.isRequired,
+   windowNameToFocus: PropTypes.string.isRequired,
+   windowWhereExecute: PropTypes.arrayOf(PropTypes.string).isRequired,
    hotKeyJSONfromServer: PropTypes.shape({
       key_to_active_auto_hot_keys: PropTypes.string.isRequired,
       hot_key_name: PropTypes.string.isRequired,

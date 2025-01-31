@@ -2,17 +2,6 @@
     "allStorage": [
         {
             "key_to_active_auto_hot_keys": "ctrl+shift+a",
-            "hot_key_name": "prueba 1",
-            "hot_key_description": "The sun set behind the mountains, casting a warm glow across the valley. Birds flew in formation, heading toward the horizon. A gentle breeze stirred the trees, and the air smelled of fresh pine. It was a peaceful evening, full of natural beauty and calm serenity.",
-            "key_to_press_when_focused": "space",
-            "window_name_to_focus": "youtube",
-            "window_name_to_back": "",
-            "windows_where_execute": [],
-            "execute_on_target": false,
-            "flexible_search": true
-        },
-        {
-            "key_to_active_auto_hot_keys": "ctrl+shift+a",
             "hot_key_name": "prueba 2",
             "hot_key_description": "descripcion de hotkey",
             "key_to_press_when_focused": "space",
@@ -20,40 +9,96 @@
             "window_name_to_back": "",
             "windows_where_execute": [],
             "execute_on_target": false,
-            "flexible_search": true
+            "flexible_search": true,
+            "flexible_search_to_back": false
         },
         {
-            "key_to_active_auto_hot_keys": "ctrl+shift+a",
-            "hot_key_name": "prueba 2",
-            "hot_key_description": "descripcion de hotkey",
-            "key_to_press_when_focused": "space",
-            "window_name_to_focus": "youtube",
-            "window_name_to_back": "",
-            "windows_where_execute": [],
-            "execute_on_target": false,
-            "flexible_search": true
-        },
-        {
-            "key_to_active_auto_hot_keys": "ctrl+alt+space",
-            "hot_key_name": "sin cometario",
+            "key_to_active_auto_hot_keys": "shift+z+x",
+            "hot_key_name": "to anki",
             "hot_key_description": "",
-            "key_to_press_when_focused": "space",
-            "window_name_to_focus": "Spotify Free",
+            "key_to_press_when_focused": "",
+            "window_name_to_focus": "Usuario 1 - Anki",
             "window_name_to_back": "",
-            "windows_where_execute": [],
+            "windows_where_execute": [
+                "netflix - Brave Search - Brave"
+            ],
             "execute_on_target": false,
-            "flexible_search": true
+            "flexible_search": true,
+            "flexible_search_to_back": false
+        },
+        {
+            "key_to_active_auto_hot_keys": "x+c+shift",
+            "hot_key_name": "prueba repetición",
+            "hot_key_description": "",
+            "key_to_press_when_focused": "",
+            "window_name_to_focus": "Usuario 1 - Anki",
+            "window_name_to_back": "reFocus",
+            "windows_where_execute": [
+                "Configuración",
+                "netflix - Brave Search - Brave",
+                "reFocus",
+                "C:\\Windows\\system32\\cmd.exe - python  C:\\Users\\andre\\Desktop\\proyects\\refocus\\frontend\\..\\backend\\__init__.py",
+                "Instalar",
+                "Experiencia de entrada de Windows",
+                "reFocus",
+                "C:\\Windows\\system32\\cmd.exe - python  C:\\Users\\andre\\Desktop\\proyects\\refocus\\frontend\\..\\backend\\__init__.py",
+                "netflix - Brave Search - Brave",
+                "Instalar",
+                "Configuración",
+                "Experiencia de entrada de Windows",
+                "reFocus",
+                "C:\\Windows\\system32\\cmd.exe - python  C:\\Users\\andre\\Desktop\\proyects\\refocus\\frontend\\..\\backend\\__init__.py",
+                "netflix - Brave Search - Brave",
+                "Instalar",
+                "Configuración",
+                "Experiencia de entrada de Windows",
+                "reFocus",
+                "C:\\Windows\\system32\\cmd.exe - python  C:\\Users\\andre\\Desktop\\proyects\\refocus\\frontend\\..\\backend\\__init__.py",
+                "netflix - Brave Search - Brave",
+                "Instalar",
+                "Configuración",
+                "Experiencia de entrada de Windows",
+                "reFocus",
+                "C:\\Windows\\system32\\cmd.exe - python  C:\\Users\\andre\\Desktop\\proyects\\refocus\\frontend\\..\\backend\\__init__.py",
+                "netflix - Brave Search - Brave",
+                "Instalar",
+                "Configuración",
+                "Experiencia de entrada de Windows"
+            ],
+            "execute_on_target": false,
+            "flexible_search": true,
+            "flexible_search_to_back": false
         },
         {
             "key_to_active_auto_hot_keys": "m",
-            "hot_key_name": "otro mas",
+            "hot_key_name": "sada",
+            "hot_key_description": "dsadas",
+            "key_to_press_when_focused": "",
+            "window_name_to_focus": "createaHotKeyController.py - backend - Python - Visual Studio Code",
+            "window_name_to_back": "Eminem - My Name Is (Official Music Video) - YouTube - Brave",
+            "windows_where_execute": [
+                "Eminem - My Name Is (Official Music Video) - YouTube - Brave",
+                "Configuración",
+                "Experiencia de entrada de Windows",
+                "¿Qué es AdMob? | Google AdMob - Brave",
+                "Vitest - Brave",
+                "__ini__.py - generalSMTPClient - Python - Visual Studio Code"
+            ],
+            "execute_on_target": false,
+            "flexible_search": true,
+            "flexible_search_to_back": false
+        },
+        {
+            "key_to_active_auto_hot_keys": "n",
+            "hot_key_name": "aaaaaaaaaaaaaa",
             "hot_key_description": "",
-            "key_to_press_when_focused": "k+space+l+ñ",
-            "window_name_to_focus": false,
+            "key_to_press_when_focused": "",
+            "window_name_to_focus": "DeepSeek - Into the Unknown - Brave",
             "window_name_to_back": "",
             "windows_where_execute": [],
             "execute_on_target": false,
-            "flexible_search": true
+            "flexible_search": true,
+            "flexible_search_to_back": false
         }
     ]
 }

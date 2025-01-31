@@ -1,7 +1,4 @@
 const programIcons = [
-   //learn
-   { wordToFind: /anki|añadir|add/, fileName: 'anki.png' },
-
    //multimedia
    { wordToFind: /youtube/, fileName: 'youtube.png' },
    { wordToFind: /disney/, fileName: 'Disney+.png' },
@@ -54,6 +51,8 @@ const programIcons = [
    { wordToFind: /kapersky/, fileName: 'kapersky.png' },
    { wordToFind: /bitdefender/, fileName: 'bitdefender.png' },
    { wordToFind: /norton|norton360/, fileName: 'norton360.png' },
+   //learn
+   { wordToFind: /anki|añadir|add/, fileName: 'anki.png' },
 ];
 
 export default programIcons;

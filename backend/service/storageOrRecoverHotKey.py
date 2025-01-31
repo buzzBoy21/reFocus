@@ -28,6 +28,7 @@ class StorageOrRecoverHotKey():
             windows_where_execute = storagedHotKey.get("windows_where_execute", [])
             execute_on_target = storagedHotKey.get("execute_on_target", False)
             flexible_search = storagedHotKey.get("flexible_search", False)
+            flexible_search_to_back = storagedHotKey.get("flexible_search_to_back", False)
 
 
             #detect if key_to_active_fuction have alt or ctrl
@@ -39,25 +40,28 @@ class StorageOrRecoverHotKey():
                                                     windows_where_execute,
                                                     execute_on_target,
                                                     modifierKeys,
-                                                    flexible_search)
+                                                    flexible_search,
+                                                    flexible_search_to_back)
             HotKey.createAndAddToHotKeyList(key_to_active_fuction,
                                     fuctionToExecute.executeReFocus,
                                     hot_key_name,
                                     hot_key_description)
     
-    def storageHotKey(self,ChangeFocusAndActionObject:ChangeFocusAndAction,HotKeyObject:HotKey,flexibleSearch):
+    def storageHotKey(self,changeFocusAndActionObject:ChangeFocusAndAction,hotKeyObject:HotKey):
         """
             Stores the created hotkey in the db.json file
         """
-        keyToActiveHotKey= HotKeyObject.keysToPress
-        nameHotKey = HotKeyObject.nameHotKey
-        description = HotKeyObject.description
+        keyToActiveHotKey= hotKeyObject.keysToPress
+        nameHotKey = hotKeyObject.nameHotKey
+        description = hotKeyObject.description
 
-        keyToPressWhenFocused = ChangeFocusAndActionObject.keyToPressWhenFocused
-        nameWindowToFocus = ChangeFocusAndActionObject.nameWindowToFocus
-        nameWindowToBack = ChangeFocusAndActionObject.nameWindowToBack
-        windowsWhereExecute = ChangeFocusAndActionObject.windowsWhereExecute
-        executeOnTarget = ChangeFocusAndActionObject.executeOnTarget
+        keyToPressWhenFocused = changeFocusAndActionObject.keyToPressWhenFocused
+        nameWindowToFocus = changeFocusAndActionObject.nameWindowToFocus
+        nameWindowToBack = changeFocusAndActionObject.nameWindowToBack
+        windowsWhereExecute = changeFocusAndActionObject.windowsWhereExecute
+        executeOnTarget = changeFocusAndActionObject.executeOnTarget
+        flexibleSearch = changeFocusAndActionObject.flexibleSearch
+        flexibleSearchToBack = changeFocusAndActionObject.flexibleSearchToBack
 
         newHotKey={
             "key_to_active_auto_hot_keys": keyToActiveHotKey,
@@ -69,6 +73,7 @@ class StorageOrRecoverHotKey():
             "windows_where_execute": windowsWhereExecute,
             "execute_on_target": executeOnTarget,
             "flexible_search": flexibleSearch,
+            "flexible_search_to_back": flexibleSearchToBack,
         }
 
         storagedHotKeys:list=self._jsonHandler.read_json()["allStorage"]

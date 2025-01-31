@@ -22,6 +22,7 @@ def createaHotKeyController(parameterRequest:RequestInfo):
     windows_where_execute = paramBody.get("windows_where_execute",[])
     execute_on_target = paramBody.get("execute_on_target",False)
     flexible_search=paramBody.get("flexible_search",False)
+    flexible_search_to_back=paramBody.get("flexible_search_to_back",False)
 
     try:
         #detect if key_to_active_fuction have alt or ctrl
@@ -33,7 +34,8 @@ def createaHotKeyController(parameterRequest:RequestInfo):
                                                 windows_where_execute,
                                                 execute_on_target,
                                                 modifierKeys,
-                                                flexible_search)
+                                                flexible_search,
+                                                flexible_search_to_back)
         
         newHotKey=HotKey.createAndAddToHotKeyList(key_to_active_fuction,
                                 fuctionToExecute.executeReFocus,
@@ -42,7 +44,7 @@ def createaHotKeyController(parameterRequest:RequestInfo):
         
         handlerStorageNewHotKey=StorageOrRecoverHotKey(generalSettings["dbFile"])
 
-        handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey,flexible_search)
+        handlerStorageNewHotKey.storageHotKey(fuctionToExecute,newHotKey)
 
         return json.dumps({"response":True})
     except Exception as genericException:

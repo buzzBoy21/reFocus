@@ -8,6 +8,9 @@ import getAllWindowNames from '../services/getAllWindowNames';
 import postCreateHotKey from '../services/createHotKey';
 import getAllHotKeys from '../services/getAllHotKeys';
 import deleteHotKey from '../services/deleteHotKey';
+import getServerIsRunning from '../services/getServerIsRunning';
+import executeCommand from '../utils/executeCommand';
+import getShutDownServer from '../services/getShutDownServer';
 
 function createWindow() {
    // Create the browser window.
@@ -86,7 +89,12 @@ app.whenReady().then(() => {
          console.error(error);
       }
    });
-
+   ipcMain.handle('execute-command', async (event, developCommand, productionCommand) => {
+      return await executeCommand(developCommand, productionCommand);
+   });
+   ipcMain.handle('absolute-path', async (event) => {
+      return process.cwd();
+   });
    ipcMain.handle('get-windows-names', async (event) => {
       try {
          return await getAllWindowNames();
@@ -120,6 +128,18 @@ app.whenReady().then(() => {
          throw error;
       }
    });
+   ipcMain.handle('health', async (event) => {
+      try {
+         return await getServerIsRunning();
+      } catch (error) {
+         console.error('Error fetching window names:', error);
+         throw error;
+      }
+   });
+   ipcMain.handle('shutdown-server', async (event) => {
+      return await getShutDownServer();
+   });
+
    createWindow();
 
    app.on('activate', function () {

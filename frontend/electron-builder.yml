@@ -13,6 +13,8 @@ files:
 extraFiles:
    from: 'src/storage'
    to: 'storage'
+   from: ../backend/  # Ruta al ejecutable generado, e.g., dist/server.exe
+     to: server/
 asarUnpack:
    - resources/**
 win:

@@ -5,7 +5,6 @@ class JsonFileHandler:
     def __init__(self, relativePath):
         "relative path from backend -> Windows: C:\\....\\backend\\ or MacOS /Users/.../backend/"
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        
         self.filepath =  os.path.join(os.path.dirname(current_dir),relativePath)
     def read_json(self)->dict:
         """Reads and returns data from a .json file"""

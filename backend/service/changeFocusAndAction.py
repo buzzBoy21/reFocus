@@ -6,7 +6,7 @@ from .windowUtils import WindowUtils
 
 
 class ChangeFocusAndAction():
-    def __init__(self,keyToPressWhenFocused:str,nameWindowToFocus:str,nameWindowToBack:str="",windowsWhereExecute:list[str]=[], executeOnTarget=False,modifierKeys=False,flexibleSearch=True):
+    def __init__(self,keyToPressWhenFocused:str,nameWindowToFocus:str,nameWindowToBack:str="",windowsWhereExecute:list[str]=[], executeOnTarget=False,modifierKeys=False,flexibleSearch=True,flexibleSearchToBack=False):
         """
             Parameters' meaning :
             - keyToPressWhenFocused: Keys to press automatically on the windows which will be focused. -> obligatory
@@ -16,6 +16,8 @@ class ChangeFocusAndAction():
             - executeOnTarget: If you want that refocus execute on the traget focus -> optional: DefaultValue:False
             - modifierKeys: If you will use a hotKey which active by modifierKeys (ctrl, alt): read why in _changeFocusAndAction function
             - flexibleSearch: Let you focus on the windows that contain the nameWIndowToFocus for exmaple nameWindowToFoc = "net" and we have a window which is "netflix | La casa de papel"
+            - flexibleSearchToBack: Let you focus on the windows that contain the nameWIndowToFocus for exmaple nameWindowToFoc = "net" and we have a window which is "netflix | La casa de papel"
+        
         """
         self.keyToPressWhenFocused = keyToPressWhenFocused
         self.nameWindowToFocus = nameWindowToFocus
@@ -24,6 +26,7 @@ class ChangeFocusAndAction():
         self.executeOnTarget=executeOnTarget  
         self.modifierKeys=modifierKeys
         self.flexibleSearch=flexibleSearch
+        self.flexibleSearchToBack=flexibleSearchToBack
     def executeReFocus(self):
         """
             Contains the condition that allows or denies the execution of the reFocus action.
@@ -44,7 +47,7 @@ class ChangeFocusAndAction():
             # if you specify some windowsWhereExecute you have to focus one of the windowsWhereExecute to execute _changeFocusAndAction
             if len(self.windowsWhereExecute)==0 or self._focusedOnWindowsWhereExecute():
 
-                    self._changeFocusAndAction()
+                self._changeFocusAndAction()
                         
     def _changeFocusAndAction(self):
         """
@@ -63,27 +66,33 @@ class ChangeFocusAndAction():
             window = app.window(title=windowToFocus)
             window.set_focus()
 
-            #Why this? -> read under
-            if self.modifierKeys:
-                #I have to use this flag because if you press a modifier Key/s + anotherKey/s, 
-                # when the SO will detected the press ctrl if you dont realease before the execution of keyboard.press(self.keyToPressWhenFocused)
-                # and the SO DETECT you PRESS the keyToPressWhenFocused and the modifier Key/s
+            if self.keyToPressWhenFocused != "":
+                #Why this? -> read under
+                if self.modifierKeys:
+                    #I have to use this flag because if you press a modifier Key/s + anotherKey/s, 
+                    # when the SO will detected the press ctrl if you dont realease before the execution of keyboard.press(self.keyToPressWhenFocused)
+                    # and the SO DETECT you PRESS the keyToPressWhenFocused and the modifier Key/s
 
 
-                # its necesary realease at least the modifier you press, but I release ctrl, alt to not decrease the reading experience and less complexity
-                # simulate the release of key
-                               
-                keyboard.send("ctrl",do_release=True, do_press=False)
-                keyboard.send("alt",do_release=True, do_press=False)
-                keyboard.send(self.keyToPressWhenFocused,do_press=True,do_release=True)
+                    # its necesary realease at least the modifier you press, but I release ctrl, alt to not decrease the reading experience and less complexity
+                    # simulate the release of key
+                                
+                    keyboard.send("ctrl",do_release=True, do_press=False)
+                    keyboard.send("alt",do_release=True, do_press=False)
+                    keyboard.send(self.keyToPressWhenFocused,do_press=True,do_release=True)
 
-            else:
-                keyboard.send(self.keyToPressWhenFocused,do_press=True,do_release=True)
+                else:
+                    keyboard.send(self.keyToPressWhenFocused,do_press=True,do_release=True)
 
             if self.nameWindowToBack != "":
-                app = Application().connect(title=self.nameWindowToBack)
-                window2 = app.window(title=self.nameWindowToBack)
-                window2.set_focus()
+
+                windowToBack= WindowUtils.WindowExist(self.nameWindowToBack,self.flexibleSearchToBack)
+                if windowToBack:
+                    app = Application().connect(title=windowToBack)
+                    window2 = app.window(title=windowToBack)
+                    window2.set_focus()
+                else:
+                    raise Exception("The name of nameWindowToBack variable="+self.nameWindowToBack+"doesn't exist") from e
 
         except Exception as e:
             print(f"Error: {str(e)}")
@@ -106,6 +115,7 @@ class ChangeFocusAndAction():
 
     def _focusedOnWindowsWhereExecute(self):
         for eachWindow in self.windowsWhereExecute:
-            if eachWindow== self._focusedWindowTitle():
+            if eachWindow== ChangeFocusAndAction._focusedWindowTitle():
                 return True
+        print("hasta aui")
         return False

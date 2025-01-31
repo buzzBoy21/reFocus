@@ -1,24 +1,35 @@
 .sidebar {
+   box-sizing: border-box;
    position: fixed;
    top: 0px;
    right: 0px;
-   z-index: 1;
+   z-index: 1000;
    width: 280px;
-   height: 100vh;
+   height: 100dvh;
    background-color: rgba(255, 255, 255, 0.2);
    backdrop-filter: blur(10px);
-   padding: 24px;
+   padding: 2em;
    box-sizing: border-box;
    transition: display 1s;
    border-right: 1px solid rgba(255, 255, 255, 0.3);
    & > nav {
-      margin-top: 2em;
+      padding-top: 2em;
+      padding-bottom: 5em;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2em;
+      gap: 1.5em;
+      height: 100%;
+      & > .options {
+         flex-grow: 2;
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-end;
+      }
    }
 }
+
 .buttonsOfNav {
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

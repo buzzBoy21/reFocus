@@ -1,6 +1,7 @@
 .hotKeyContainer {
    top: 0px;
    z-index: 100;
+   width: 100%;
    position: absolute;
    display: flex;
    flex-direction: column;
@@ -30,6 +31,11 @@
    }
    & > .keys {
       display: flex;
+      align-items: center;
+      gap: 0.5em;
+      & > p:first-child {
+         text-wrap: nowrap;
+      }
    }
 
    /* window to focus */
@@ -59,6 +65,22 @@
       }
       & + p {
          font-size: 0.8em;
+      }
+   }
+   & > .windowWhereExecute {
+      & + div {
+         display: flex;
+         gap: 0.5em;
+         flex-wrap: wrap;
+         & > img {
+            width: fit-content;
+            height: 2em;
+            object-fit: contain;
+
+            &:hover {
+               cursor: help;
+            }
+         }
       }
    }
 }

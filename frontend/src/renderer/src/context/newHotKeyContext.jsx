@@ -24,6 +24,7 @@ const defaultContextValue = {
    windowToBack: [], //[{"id": idSelectedWindow,"nameWindow": selectedWindowName},...]
    executeOnTargetWindow: false,
    intelligenceSearch: true,
+   intelligenceSearchToBack: false,
 };
 export default function NewHotKeyContext({ children }) {
    const [valueContext, setValueContext] = useState(defaultContextValue);

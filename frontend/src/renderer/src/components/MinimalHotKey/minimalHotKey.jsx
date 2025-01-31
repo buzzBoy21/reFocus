@@ -29,16 +29,17 @@ function MinimalHotKey({
             </div>
             <p>window to focus</p>
             <img src={imageWindowNameToFocus} alt="" title={titleImageWindowNameToFocus} />
-
-            <button
-               className={style.eraseButton}
-               onClick={async (e) => {
-                  e.stopPropagation(); //to don't execute onClick function when you press button
-                  await window.api.services.deleteHotKey(hotKeyJSONfromServer);
-               }}
-            >
-               Delete
-            </button>
+            <div>
+               <button
+                  className={style.eraseButton}
+                  onClick={async (e) => {
+                     e.stopPropagation(); //to don't execute onClick function when you press button
+                     await window.api.services.deleteHotKey(hotKeyJSONfromServer);
+                  }}
+               >
+                  Delete
+               </button>
+            </div>
          </div>
       </>
    );

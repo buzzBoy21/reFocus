@@ -35,6 +35,7 @@ function CreatedHotKey() {
                         hotKeyJSONfromServer={hotKey}
                         windowNameToFocus={hotKey.window_name_to_focus}
                         windowNameToBack={hotKey.window_name_to_back}
+                        windowWhereExecute={hotKey.windows_where_execute}
                      />
                   ))
                )}

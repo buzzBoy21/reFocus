@@ -9,11 +9,16 @@ const api = {
    //To call this -> use window.api.writeFileCustom
    writeFileCustom: (filePath, content) => ipcRenderer.invoke('write-file', filePath, content),
    isFullscreen: () => ipcRenderer.invoke('fullScreenChecking'),
+   executeCommand: (developerCommand, productionCommand) =>
+      ipcRenderer.invoke('execute-command', developerCommand, productionCommand),
+   getAbsolutePath: () => ipcRenderer.invoke('absolute-path'),
    services: {
+      getShutDownServer: () => ipcRenderer.invoke('shutdown-server'),
       getAllWindowNames: () => ipcRenderer.invoke('get-windows-names'),
       getAllHotKeys: () => ipcRenderer.invoke('get-hot-keys'),
       postCreateHotKey: (contextValue) => ipcRenderer.invoke('post-create-hot-key', contextValue),
       deleteHotKey: (hotKey) => ipcRenderer.invoke('delete-hot-key', hotKey),
+      serverIsRunning: () => ipcRenderer.invoke('health'),
    },
 };
 

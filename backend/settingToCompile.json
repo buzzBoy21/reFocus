@@ -1,0 +1,101 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/__init__.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": false
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/service;service/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/server;server/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/model;model/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/exceptions;exceptions/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/controllers;controllers/"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "json"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "keyboard"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "pygetwindow"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "pywinauto"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/config;config/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/andre/Desktop/proyects/refocus/backend/db.json;."
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

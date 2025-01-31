@@ -7,5 +7,5 @@ from config.settings import generalSettings
 def getAllHotKeys(parameterRequest:RequestInfo):
     inputOutPutHandler = StorageOrRecoverHotKey(generalSettings["dbFile"])
     allHoyKeys= inputOutPutHandler.getAllHoyKeys()
-    
+    print(json.dumps(allHoyKeys, indent=4))
     return json.dumps(allHoyKeys)

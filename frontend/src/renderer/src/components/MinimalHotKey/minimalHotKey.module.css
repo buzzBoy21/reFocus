@@ -23,6 +23,11 @@
    }
    & > .keys {
       display: flex;
+      align-items: center;
+      gap: 0.5em;
+      & > p:first-child {
+         text-wrap: nowrap;
+      }
    }
    /* window to focus */
    & > img {
@@ -34,20 +39,25 @@
          cursor: help;
       }
    }
+   /* erease container*/
+   & > div:last-child {
+      flex-grow: 3;
+      place-content: end;
+      & > .eraseButton {
+         padding: 1em;
+         background-color: #ff4d4d;
+         color: white;
+         border: 0;
+         border-radius: 0.7em;
+         font-family: 'Marhey';
+         width: 100%;
+         margin-top: 2em;
+      }
+      & .eraseButton:hover {
+         cursor: pointer;
+      }
+   }
 }
 .hotKeyContainer:hover {
-   cursor: pointer;
-}
-.eraseButton {
-   padding: 1em;
-   background-color: #ff4d4d;
-   color: white;
-   border: 0;
-   border-radius: 0.7em;
-   font-family: 'Marhey';
-   width: 100%;
-   margin-top: 2em;
-}
-.eraseButton:hover {
    cursor: pointer;
 }

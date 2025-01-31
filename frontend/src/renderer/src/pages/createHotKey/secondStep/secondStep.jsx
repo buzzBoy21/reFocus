@@ -71,6 +71,7 @@ export default function SecondStep() {
                         <SelectWindow
                            defaultPhrase="to active on all windows"
                            storeInKeyName="windowWhereActive"
+                           showPersonalWindows={false}
                         ></SelectWindow>
                      </div>
                      <div>
@@ -111,6 +112,17 @@ export default function SecondStep() {
                         label="Active flexible search"
                         tooltip="It's going to focus on the windows whose names match the name of the window to focus on. For example, if we select 'net' and there is a window named 'Netflix - La casa de papel,' the program will focus on that window because 'Netflix' contains 'net.'"
                         initialState={true}
+                     ></Switch>
+                     <Switch
+                        execute={() => {
+                           updateAttribute(
+                              'intelligenceSearchToBack',
+                              !valueContext.intelligenceSearchToBack
+                           );
+                        }}
+                        label="Active flexible search when back"
+                        tooltip="it will return to the window that contains the specified name. For example, if you have a window called 'Netflix - La casa de papel' and you select 'net' as the window to return to, it will automatically focus on the window 'Netflix - La casa de papel'"
+                        initialState={false}
                      ></Switch>
                   </div>
                </section>

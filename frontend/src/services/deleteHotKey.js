@@ -11,6 +11,7 @@ function deleteHotKey(bodyData) {
          windows_where_execute: bodyData.windows_where_execute, //remove the id
          execute_on_target: bodyData.execute_on_target,
          flexible_search: bodyData.flexible_search,
+         flexible_search_to_back: bodyData.flexible_search_to_back,
       })
    );
    return fetch('http://localhost:8080/delete-hot-key', {
@@ -29,6 +30,7 @@ function deleteHotKey(bodyData) {
          windows_where_execute: bodyData.windows_where_execute, //remove the id
          execute_on_target: bodyData.execute_on_target,
          flexible_search: bodyData.flexible_search,
+         flexible_search_to_back: bodyData.flexible_search_to_back,
       }),
    })
       .then((response) => {

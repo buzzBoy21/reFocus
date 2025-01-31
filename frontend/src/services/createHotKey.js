@@ -22,6 +22,7 @@ export default function postCreateHotKey(bodyData) {
          windows_where_execute: bodyData.windowWhereActive.map((item) => item.nameWindow), //remove the id
          execute_on_target: bodyData.executeOnTargetWindow,
          flexible_search: bodyData.intelligenceSearch,
+         flexible_search_to_back: bodyData.intelligenceSearchToBack,
       }),
    })
       .then((response) => {

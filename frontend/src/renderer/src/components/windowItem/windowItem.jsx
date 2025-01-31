@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import style from './windowItem.module.css';
 import notFoundImg from '../../assets/notFound.svg';
 import findAndImportProgramImg from './findProgramImg';
@@ -14,6 +14,7 @@ export default function WindowItem({
    onlySelectOne = false,
    IdOtherPressedWindow = [],
 }) {
+   const [hasMounted, setHasMounted] = useState(false);
    const [isPressed, setIsPressed] = useState(alreadyPressed);
    const [importedImg, setImportedImg] = useState(false);
    function handleOnclick() {
@@ -32,32 +33,47 @@ export default function WindowItem({
       }, [IdOtherPressedWindow[0]]); //This only is active when the user press other windowItem
 
       useEffect(() => {
-         if (onlySelectOne) {
-            // to modify the selectWindow state
-            modifyParentState((prevValue) => {
-               if (isPressed) {
-                  //when you click on windows
-                  IdOtherPressedWindow[1](windowAttributes.id);
-                  return [windowAttributes];
-               } else if (IdOtherPressedWindow[0] != windowAttributes.id) {
-                  //when the useEffect of above was activated, remember the useEffect, It allow change the border color of the window to not select color
-                  return prevValue;
-               } else if (isPressed == false && IdOtherPressedWindow[0] == windowAttributes.id) {
-                  //when you pressed a window, and press again to unselect that window
-                  IdOtherPressedWindow[1]('');
-                  return prevValue.filter((storedWindow) => storedWindow.id != windowAttributes.id);
-               }
-            });
-         } else {
-            // to modify the selectWindow state
-            // if newValue = true -> write the inside it the nameWindow
-            // if newValue = false -> erase nameWindow, which is inside of selectWindow state
-            // If I don't write this in the useEffect -> Cannot update a component (SelectWindow) while rendering a different component (WindowItem). see -> https://nidhisharma639593.medium.com/react-bad-setstate-call-f540ee484ce4
-            modifyParentState((prevValue) =>
-               isPressed
-                  ? [...prevValue, windowAttributes]
-                  : prevValue.filter((storedWindow) => storedWindow.id != windowAttributes.id)
-            );
+         if (!hasMounted) {
+            setHasMounted(true);
+            return;
+         }
+         if (hasMounted) {
+            if (onlySelectOne) {
+               // to modify the selectWindow state
+               modifyParentState((prevValue) => {
+                  if (isPressed) {
+                     //when you click on windows
+                     IdOtherPressedWindow[1](windowAttributes.id);
+                     return [windowAttributes];
+                  } else if (IdOtherPressedWindow[0] != windowAttributes.id) {
+                     //when the useEffect of above was activated, remember the useEffect, It allow change the border color of the window to not select color
+                     return prevValue;
+                  } else if (isPressed == false && IdOtherPressedWindow[0] == windowAttributes.id) {
+                     //when you pressed a window, and press again to unselect that window
+                     IdOtherPressedWindow[1]('');
+                     return prevValue.filter(
+                        (storedWindow) => storedWindow.id != windowAttributes.id
+                     );
+                  }
+               });
+            } else {
+               // to modify the selectWindow state
+               // if newValue = true -> write the inside it the nameWindow
+               // if newValue = false -> erase nameWindow, which is inside of selectWindow state
+               // If I don't write this in the useEffect -> Cannot update a component (SelectWindow) while rendering a different component (WindowItem). see -> https://nidhisharma639593.medium.com/react-bad-setstate-call-f540ee484ce4
+               modifyParentState((prevValue) => {
+                  console.log('ispressed', isPressed);
+                  console.log(
+                     'insertado',
+                     isPressed
+                        ? [...prevValue, windowAttributes]
+                        : prevValue.filter((storedWindow) => storedWindow.id != windowAttributes.id)
+                  );
+                  return isPressed && isPressed != alreadyPressed
+                     ? [...prevValue, windowAttributes]
+                     : prevValue.filter((storedWindow) => storedWindow.id != windowAttributes.id);
+               });
+            }
          }
       }, [isPressed, modifyParentState]);
    }
