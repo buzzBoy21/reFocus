@@ -1,3 +1,5 @@
-provider: generic
-url: https://example.com/auto-updates
+provider: github
+url: https://github.com/buzzBoy21/reFocus
 updaterCacheDirName: frontend-updater
+owner: buzzBoy21
+repo: reFocus
