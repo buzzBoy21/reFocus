@@ -11,16 +11,16 @@ files:
    - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
    - '!{src/fileOutInput/readFile.js}'
 extraFiles:
-   from: 'src/storage'
-   to: 'storage'
-   from: ../backend/  # Ruta al ejecutable generado, e.g., dist/server.exe
-     to: server/
+   - from: 'src/storage'
+     to: 'storage'
+   - from: '../backend/dist/__init__'
+     to: 'backend/'
 asarUnpack:
    - resources/**
 win:
    executableName: reFocus
 nsis:
-   artifactName: ${name}-${version}-setup.${ext}
+   artifactName: reFocus-${version}-setup.${ext}
    shortcutName: ${productName}
    uninstallDisplayName: ${productName}
    createDesktopShortcut: always
@@ -34,7 +34,7 @@ mac:
    notarize: false
    icon: build/reFocus_icon.icns
 dmg:
-   artifactName: ${name}-${version}.${ext}
+   artifactName: reFocus-${version}.${ext}
 linux:
    target:
       - AppImage

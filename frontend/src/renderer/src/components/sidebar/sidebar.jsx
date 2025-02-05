@@ -12,6 +12,7 @@ function Sidebar() {
    const [serverIsRunning, setServerIsRunning] = useState(null);
    const absolutePath = useRef(null);
    const [writeMessage] = useContext(HandleMessageContext);
+   const [path, setPath] = useState(null);
 
    useEffect(() => {
       const fetching = async () => {
@@ -33,8 +34,10 @@ function Sidebar() {
 
                const command = await window.api.executeCommand(
                   'start cmd /k "python ' + absolutePath.current + '\\..\\backend\\__init__.py"',
-                  './../../../../../../backend/__init__.exe'
+                  '\\backend\\__init__.exe'
                );
+               setPath(absolutePath.current + '\\backend\\__init__.exe');
+
                console.log('--------------------------------------', command);
             } else {
                const serverIsOff = await window.api.services.getShutDownServer();
@@ -86,6 +89,7 @@ function Sidebar() {
                   Settings
                </Button>
             </NavLink>
+            {path}
             <div className={style.options}>
                {serverIsRunning !== null && (
                   <Switch
